@@ -26,12 +26,10 @@ function saveDelivery(req,res){
 
   let delivery = new Delivery()
   delivery.client = req.body.client
-
-  /*product.name = req.body.name
-  product.picture = req.body.picture
-  product.price = req.body.price
-  product.category = req.body.category
-  product.description = req.body.description*/
+  delivery.domiciliario = req.body.domiciliario
+  delivery.addressStart = req.body.addressStart
+  delivery.addressEnd = req.body.addressEnd
+  delivery.category = req.body.category
 
   delivery.save((err, deliveryStored)=>{
     if(err){
