@@ -30,11 +30,7 @@ function updateDomiciliario(req,res){
   let update = req.body
   Domiciliario.findById(domiciliarioId, (err, domiciliario) =>{
     if(err) return res.status(500).send({message:`Error al encontrar el domiciliario en la base de datos ${err}`})
-    domiciliario.update({$set: update}, (err)=>{
-      if(err)return res.status(500).send({message: err})
-      res.status(200).send({message: 'todo bien'})
-    })
-
+    domiciliario.update({$set: update})
   })
 }
 
