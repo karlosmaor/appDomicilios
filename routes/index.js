@@ -6,8 +6,8 @@ const auth = require('../middlewares/auth')
 
 //const ClientCtrl = require('../controllers/client')
 const DeliveryCtrl  = require('../controllers/delivery')
-/*const DomiciliarioCtrl  = require('../controllers/domiciliario')
-const workerCtrl  = require('../controllers/worker')
+const DomiciliarioCtrl  = require('../controllers/domiciliario')
+/*const workerCtrl  = require('../controllers/worker')
 
 //----------------Rutas Cliente-------------//
 
