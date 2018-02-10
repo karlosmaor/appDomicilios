@@ -26,15 +26,16 @@ api.put('/delivery/:deliveryId', DeliveryCtrl.updateDelivery)
 api.delete('/delivery/:deliveryId', DeliveryCtrl.deleteDelivery)
 
 //--------------Rutas para domiciliario-------------//
-/*
+
 api.get('/domiciliarios', DomiciliarioCtrl.getDomiciliarios)
 api.get('/domiciliario/:domiciliarioId', DomiciliarioCtrl.getDomiciliario)
-api.post('/domiciliario', DomiciliarioCtrl.saveDomiciliario)
+api.post('/domiciliario/signup', DomiciliarioCtrl.signUp)
+api.post('/domiciliario/signin', DomiciliarioCtrl.signIn)
 api.put('/domiciliario/:domiciliarioId', DomiciliarioCtrl.updateDomiciliario)
 api.delete('/domiciliario/:domiciliarioId', DomiciliarioCtrl.deleteDomiciliario)
 
 //----------------Rutas para worker--------------------//
-
+/*
 api.get('/workers', workerCtrl.getWorkers)
 api.get('/worker/:workerId', workerCtrl.getWorker)
 api.post('/worker', workerCtrl.saveWorker)

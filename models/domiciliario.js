@@ -10,7 +10,7 @@ const DomiciliarioSchema = new Schema({
   name: String,
   avatar: String,
   phone: String,
-  coins: Number,
+  coins: {type: Number, default: 0},
   deliveries: [String],
   position: position: {
     lat: {type: Number, default: 0.0},
@@ -37,5 +37,15 @@ DomiciliarioSchema.pre('save',(next)=>{
     })
   })
 })
+
+DomiciliarioSchema.methods.comparePass = function (pass,isMatch) {
+  mongoose.model('Domiciliario', DomiciliarioSchema).findOne({ email: this.email },'password', (err, domiciliario) => {
+        bcrypt.compare(pass, domiciliario.pass, function(err, res) {
+          if (err)return console.log({ message: err })
+          isMatch(res)
+        });
+    });
+
+}
 
 module.exports = mongoose.model('Domiciliario',DomiciliarioSchema)
