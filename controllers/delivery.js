@@ -25,7 +25,7 @@ function getDeliveries(req, res){
 function saveDelivery(req,res){
 
   let delivery = new Delivery()
-  delivery = req.body
+  delivery.client = req.body.client
 
   /*product.name = req.body.name
   product.picture = req.body.picture
