@@ -34,7 +34,7 @@ function updateDomiciliario(req,res){
     domiciliario.update(update,(err) => {
       if(err) return res.status(500).send({message:'Error editando el domiciliario'})
     })
-    res.status(200).send({message:muy perfecto})
+    res.status(200).send({message: 'muy perfecto'})
   })
 }
 
