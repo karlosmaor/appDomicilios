@@ -39,7 +39,12 @@ DomiciliarioSchema.pre('save',function(next){
 })
 
 DomiciliarioSchema.pre('findByIdAndUpdate',function(next){
+
+  console.log('Estoy en pre update')
+
   let dom = this
+
+  console.log(dom);
   if(dom.password == "") return next()
 
   bcrypt.genSalt(10, (err,salt)=>{
