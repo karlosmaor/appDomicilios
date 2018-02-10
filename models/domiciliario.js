@@ -38,7 +38,7 @@ DomiciliarioSchema.pre('save',function(next){
   })
 })
 
-DomiciliarioSchema.pre('findByIdAndUpdate',function(next){
+DomiciliarioSchema.pre('update',function(next){
 
   console.log('Estoy en pre update')
 
