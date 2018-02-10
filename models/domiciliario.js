@@ -38,7 +38,7 @@ DomiciliarioSchema.pre('save',function(next){
   })
 })
 
-DomiciliarioSchema.pre('update',(next)=>{
+DomiciliarioSchema.pre('update',function(next){
   let dom = this
   if(dom.password == "") return next()
 
