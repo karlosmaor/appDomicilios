@@ -2,12 +2,12 @@
 
 const express = require('express')
 const api = express.Router()
-const auth = require('../middleswares/auth')
+const auth = require('../middlewares/auth')
 
-const ClientCtrl = require('../controles/client')
-const DeliveryCtrl  = require('../controles/delivery')
-const DomiciliarioCtrl  = require('../controles/domiciliario')
-const workerCtrl  = require('../controles/worker')
+//const ClientCtrl = require('../controllers/client')
+const DeliveryCtrl  = require('../controllers/delivery')
+/*const DomiciliarioCtrl  = require('../controllers/domiciliario')
+const workerCtrl  = require('../controllers/worker')
 
 //----------------Rutas Cliente-------------//
 
@@ -15,7 +15,7 @@ api.get('/clients', ClientCtrl.getClients)
 api.get('/client/:clientId', ClientCtrl.getClient)
 api.post('/client', ClientCtrl.saveClient)
 api.put('/client/:clientId', ClientCtrl.updateClient)
-api.delete('/client/:clientId', ClientCtrl.deleteClient)
+api.delete('/client/:clientId', ClientCtrl.deleteClient)*/
 
 //---------------Rutas para entregas----------//
 
@@ -26,7 +26,7 @@ api.put('/delivery/:deliveryId', DeliveryCtrl.updateDelivery)
 api.delete('/delivery/:deliveryId', DeliveryCtrl.deleteDelivery)
 
 //--------------Rutas para domiciliario-------------//
-
+/*
 api.get('/domiciliarios', DomiciliarioCtrl.getDomiciliarios)
 api.get('/domiciliario/:domiciliarioId', DomiciliarioCtrl.getDomiciliario)
 api.post('/domiciliario', DomiciliarioCtrl.saveDomiciliario)

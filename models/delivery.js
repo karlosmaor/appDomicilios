@@ -7,7 +7,7 @@ const DeliveySchema = new Schema({
   client: String,
   domiciliario: String,
   addressStart: String,
-  adressEnd: String,
+  addressEnd: String,
   date: {type: Date, default: Date.now()},
   category: String,
   state: {type:Number, default: 0}
