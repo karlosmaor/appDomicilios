@@ -10,7 +10,7 @@ function getDelivery(req,res){
     if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(!delivery) return res.status(404).send({message:'El producto no existe'})
 
-  res.status(200).send({delivery})
+  res.status(200).send(delivery)
   })
 }
 
@@ -45,7 +45,7 @@ function updateDelivery(req,res){
   let update = req.body
   Delivery.findByIdAndUpdate(deliveryId, update,  (err, deliveryUpdated) =>{
     if(err) return res.status(500).send({message:`Error al editar la entrega de la base de datos ${err}`})
-    res.status(200).send({deliveryUpdated})
+    res.status(200).send(deliveryUpdated)
   })
 }
 
