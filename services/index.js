@@ -28,7 +28,7 @@ function decodeToken(token){
       }
       resolve(payLoad.sub)
     }catch(err){
-    
+
       reject({
         status: 500,
         message: 'Invalid Token'
