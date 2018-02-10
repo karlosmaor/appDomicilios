@@ -19,7 +19,7 @@ function getDeliveries(req, res){
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(deliveries.length == 0)return res.status(404).send({message:'No hay entregas'})
 
-    res.status(200).send({ deliveries })
+    res.status(200).send(deliveries
   })
 }
 
