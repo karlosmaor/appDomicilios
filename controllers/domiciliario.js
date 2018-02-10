@@ -28,9 +28,13 @@ function getDomiciliarios(req, res){
 function updateDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
   let update = req.body
-  Domiciliario.findByIdAndUpdate(domiciliarioId, update,  (err, domiciliarioUpdated) =>{
-    if(err) return res.status(500).send({message:`Error al editar el domiciliario en la base de datos ${err}`})
-    res.status(200).send({domiciliarioUpdated})
+  Domiciliario.findById(domiciliarioId,  (err, domiciliario) =>{
+    if(err) return res.status(500).send({message:`Error al encontrar el domiciliario en la base de datos ${err}`})
+
+    domiciliario.update(update,(err)=>{
+      if(err) return res.status(500).send({message:'Error editando el domiciliario'})
+    })
+    res.status(200).send({message:muy perfecto})
   })
 }
 
