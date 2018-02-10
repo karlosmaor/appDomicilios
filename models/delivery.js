@@ -8,7 +8,7 @@ const DeliveySchema = new Schema({
   domiciliario: String,
   addressStart: String,
   addressEnd: String,
-  date: {type: Date, default: new Date(Date.now().valueOf()+Date.now().getTimezoneOffset()*60000)},
+  date: {type: Date, default: Date.now()},
   category: String,
   state: {type:Number, default: 0}
 })
