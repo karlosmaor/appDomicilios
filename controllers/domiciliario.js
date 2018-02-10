@@ -31,7 +31,7 @@ function updateDomiciliario(req,res){
   Domiciliario.findById(domiciliarioId,  (err, domiciliario) =>{
     if(err) return res.status(500).send({message:`Error al encontrar el domiciliario en la base de datos ${err}`})
 
-    domiciliario.update(update,(err)=>{
+    domiciliario.update(update,(err) => {
       if(err) return res.status(500).send({message:'Error editando el domiciliario'})
     })
     res.status(200).send({message:muy perfecto})
