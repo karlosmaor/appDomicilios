@@ -56,7 +56,7 @@ DomiciliarioSchema.pre('update',(next)=>{
 
 DomiciliarioSchema.methods.comparePass = function (pass,isMatch) {
   mongoose.model('Domiciliario', DomiciliarioSchema).findOne({ email: this.email },'password', (err, domiciliario) => {
-        bcrypt.compare(pass, domiciliario.pass, function(err, res) {
+        bcrypt.compare(pass, domiciliario.password, function(err, res) {
           if (err)return console.log({ message: err })
           isMatch(res)
         });
