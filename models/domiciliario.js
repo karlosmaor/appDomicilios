@@ -38,27 +38,6 @@ DomiciliarioSchema.pre('save',function(next){
   })
 })
 
-DomiciliarioSchema.pre('update',function(next){
-
-  console.log('Estoy en pre update')
-
-  let dom = this
-
-  console.log(dom);
-  if(dom.password == "") return next()
-
-  bcrypt.genSalt(10, (err,salt)=>{
-    if(err) return next()
-
-    bcrypt.hash(dom.password, salt, null, (err, hash)=>{
-      if(err) return next(err)
-
-      dom.password = hash
-      next()
-    })
-  })
-})
-
 DomiciliarioSchema.methods.comparePass = function (pass,isMatch) {
   mongoose.model('Domiciliario', DomiciliarioSchema).findOne({ email: this.email },'password', (err, domiciliario) => {
         bcrypt.compare(pass, domiciliario.password, function(err, res) {
