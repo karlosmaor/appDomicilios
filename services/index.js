@@ -41,14 +41,11 @@ function decodeToken(token){
 }
 
 function bcryptWord(word,out){
-//  console.log(word);
   bcrypt.genSalt(10, (err,salt)=>{
     if(err) return console.log(err)
-  //  console.log(salt);
 
     bcrypt.hash(word, salt, null, (err, hash)=>{
       if(err) return console.log(err)
-//console.log(hash);
       out(hash)
     })
   })
