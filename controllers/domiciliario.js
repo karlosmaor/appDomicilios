@@ -32,7 +32,7 @@ function updateDomiciliario(req,res){
   if(update.password != ""){
     service.bcryptWord(update.password, (hash)=>{
       update.password = hash
-      console.log(hash);
+      console.log(update.password);
     })
   }
   //console.log(update.password);
