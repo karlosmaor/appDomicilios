@@ -28,7 +28,9 @@ function getDomiciliarios(req, res){
 function updateDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
   let update = req.body
-  update.password = 'carlos'
+  if(update.password){
+    update.password = 'carlos'
+  }
   console.log(update);
   Domiciliario.findByIdAndUpdate(domiciliarioId, update, (err, domiciliarioUpdated) =>{
     if(err) return res.status(500).send({message:`Error al editar el domiciliario en la base de datos ${err}`})
