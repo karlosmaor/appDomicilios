@@ -46,7 +46,7 @@ function bcryptWord(word){
 
     bcrypt.hash(word, salt, null, (err, hash)=>{
       if(err) return console.log(err)
-      return hash
+      word = hash
     })
   })
 }
