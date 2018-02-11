@@ -40,13 +40,13 @@ function decodeToken(token){
   return decoded
 }
 
-function bcryptWord(word,out){
+function bcryptWord(word){
   bcrypt.genSalt(10, (err,salt)=>{
     if(err) return console.log(err)
 
     bcrypt.hash(word, salt, null, (err, hash)=>{
       if(err) return console.log(err)
-      out(hash)
+      return hash
     })
   })
 }

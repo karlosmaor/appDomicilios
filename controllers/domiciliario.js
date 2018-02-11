@@ -30,10 +30,7 @@ function updateDomiciliario(req,res){
   let update = req.body
 //  console.log(update.password);
   if(update.password != ""){
-    service.bcryptWord(update.password, function(hash){
-      update.password = hash
-      console.log(update.password);
-    })
+    update.password = service.bcryptWord(update.password)
   }
   console.log(update.password);
   Domiciliario.findByIdAndUpdate(domiciliarioId, update, (err, domiciliarioUpdated) =>{
