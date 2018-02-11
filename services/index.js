@@ -44,7 +44,7 @@ function bcryptWord(word){
   bcrypt.genSalt(10, (err,salt)=>{
     if(err) return console.log(err)
 
-    bcrypt.hash(dom.password, salt, null, (err, hash)=>{
+    bcrypt.hash(word, salt, null, (err, hash)=>{
       if(err) return console.log(err)
 
       return hash
