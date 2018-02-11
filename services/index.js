@@ -3,7 +3,6 @@
 const jwt = require('jwt-simple')
 const moment = require('moment')
 const config = require('../config')
-const bcrypt = require('bcrypt-nodejs')
 
 function createToken(user){
   const payLoad = {
@@ -40,20 +39,9 @@ function decodeToken(token){
   return decoded
 }
 
-function bcryptWord(word){
-  bcrypt.genSalt(10, (err,salt)=>{
-    if(err) return console.log(err)
 
-    bcrypt.hash(word, salt, null, (err, hash)=>{
-      if(err) return console.log(err)
-
-      return hash
-    })
-  })
-}
 
 module.exports = {
    createToken,
-   decodeToken,
-   bcryptWord
+   decodeToken
 }

@@ -3,7 +3,6 @@
 const mongoose = require('mongoose')
 const Domiciliario = require('../models/domiciliario')
 const service = require('../services')
-const bcrypt = require('bcrypt-nodejs')
 
 function getDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
