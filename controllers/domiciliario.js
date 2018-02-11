@@ -39,11 +39,12 @@ function updateDomiciliario(req,res){
         dom.password = update.password
         dom.save((err)=>{
           if(err) res.status(500).send(err)
-          res.status(200).send({domiciliarioUpdated})
+
         })
       })
     }
-    
+    res.status(200).send(domiciliarioUpdated)
+
   })
 
 }
