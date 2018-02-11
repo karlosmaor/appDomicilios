@@ -3,6 +3,7 @@
 const mongoose = require('mongoose')
 const Domiciliario = require('../models/domiciliario')
 const service = require('../services')
+const bcrypt = require('bcrypt-nodejs')
 
 function getDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
@@ -29,7 +30,15 @@ function updateDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
   let update = req.body
   if(update.password){
-    update.password = 'carlos'
+    bcrypt.genSalt(10, (err,salt)=>{
+      if(err) return console.log(err)
+
+      bcrypt.hash(update.password, salt, null, (err, hash)=>{
+        if(err) return console.log(err)
+
+        update.password = hash
+      })
+    })
   }
   console.log(update);
   Domiciliario.findByIdAndUpdate(domiciliarioId, update, (err, domiciliarioUpdated) =>{
