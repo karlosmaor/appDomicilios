@@ -27,7 +27,7 @@ function getDomiciliarios(req, res){
 
 function updateDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
-  let update = req.body
+  var update = req.body
 //  console.log(update.password);
   if(update.password != ""){
     update.password = service.bcryptWord(update.password)
