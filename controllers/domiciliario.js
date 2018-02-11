@@ -30,11 +30,11 @@ function updateDomiciliario(req,res){
   let update = req.body
 //  console.log(update.password);
   if(update.password != ""){
-    service.bcryptWord(update.password, out)
-    update.password = out
-  //  console.log(service.bcryptWord(update.password));
+    service.bcryptWord(update.password, (hash)=>{
+      update.password = hash
+    })
   }
-  //console.log(update.password);
+  console.log(update.password);
   Domiciliario.findByIdAndUpdate(domiciliarioId, update, (err, domiciliarioUpdated) =>{
     if(err) return res.status(500).send({message:`Error al editar el domiciliario en la base de datos ${err}`})
     res.status(200).send({domiciliarioUpdated})
