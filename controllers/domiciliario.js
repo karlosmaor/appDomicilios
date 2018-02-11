@@ -30,7 +30,7 @@ function updateDomiciliario(req,res){
   let update = req.body
 
   if(update.password != ""){
-    console.log(service.bcryptWord(update.password));
+  //  console.log(service.bcryptWord(update.password));
     update.password = service.bcryptWord(update.password)
 
   }
