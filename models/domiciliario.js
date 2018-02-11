@@ -23,6 +23,7 @@ const DomiciliarioSchema = new Schema({
 })
 
 DomiciliarioSchema.pre('save',function(next){
+  console.log('Exitoooo');
   let dom = this
   if(dom.password == "") return next()
 
