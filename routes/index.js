@@ -4,16 +4,17 @@ const express = require('express')
 const api = express.Router()
 const auth = require('../middlewares/auth')
 
-//const ClientCtrl = require('../controllers/client')
+const ClientCtrl = require('../controllers/client')
 const DeliveryCtrl  = require('../controllers/delivery')
 const DomiciliarioCtrl  = require('../controllers/domiciliario')
 const workerCtrl  = require('../controllers/worker')
-/*
+
 //----------------Rutas Cliente-------------//
 
 api.get('/clients', ClientCtrl.getClients)
 api.get('/client/:clientId', ClientCtrl.getClient)
-api.post('/client', ClientCtrl.saveClient)
+api.post('/client/signup', ClientCtrl.signUp)
+api.post('/client/signin', ClientCtrl.signIn)
 api.put('/client/:clientId', ClientCtrl.updateClient)
 api.delete('/client/:clientId', ClientCtrl.deleteClient)*/
 

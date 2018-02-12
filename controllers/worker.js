@@ -66,7 +66,8 @@ function signUp(req,res){
   worker.name = req.body.name
   worker.avatar = req.body.avatar
   worker.phone = req.body.phone
-  worker.category = req.body.category
+  worker.address = req.body.address
+  worker.rank = req.body.rank
 
   Worker.find({email: req.body.email}, (err,wor) =>{
     if(err) return res.status(500).send({message: err})

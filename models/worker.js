@@ -37,9 +37,8 @@ WorkerSchema.methods.comparePass = function (pass,isMatch) {
         bcrypt.compare(pass, worker.password, function(err, res) {
           if (err)return console.log({ mensaje: err })
           isMatch(res)
-        });
-    });
-
+        })
+    })
 }
 
 module.exports = mongoose.model('Worker',WorkerSchema)

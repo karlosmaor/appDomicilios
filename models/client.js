@@ -36,4 +36,13 @@ ClientSchema.pre('save',function(next){
   })
 })
 
+ClientSchema.methods.comparePass = function (pass,isMatch) {
+  mongoose.model('Client', ClientSchema).findOne({ email: this.email },'password', (err, client) => {
+        bcrypt.compare(pass, client.password, function(err, res) {
+          if (err)return console.log({ mensaje: err })
+          isMatch(res)
+        })
+    })
+}
+
 module.exports = mongoose.model('Client',ClientSchema)
