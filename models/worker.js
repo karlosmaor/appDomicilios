@@ -16,7 +16,7 @@ const WorkerSchema = new Schema({
   rank: Number
 })
 
-WorkerSchema.pre('save',(next)=>{
+WorkerSchema.pre('save',function(next){
   let worker = this
   if(worker.password == undefined) return next()
 

@@ -20,7 +20,7 @@ const ClientSchema = new Schema({
   lastLogin: Date
 })
 
-ClientSchema.pre('save',(next)=>{
+ClientSchema.pre('save',function(next){
   let client = this
   if(client.password == "") return next()
 
