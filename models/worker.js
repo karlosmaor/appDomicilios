@@ -18,7 +18,7 @@ const WorkerSchema = new Schema({
 
 WorkerSchema.pre('save',(next)=>{
   let worker = this
-  if(worker.password == "") return next()
+  if(worker.password == undefined) return next()
 
   bcrypt.genSalt(10, (err,salt)=>{
     if(err) return next()
@@ -31,5 +31,15 @@ WorkerSchema.pre('save',(next)=>{
     })
   })
 })
+
+WorkerSchema.methods.comparePass = function (pass,isMatch) {
+  mongoose.model('Worker', WorkerSchema).findOne({ email: this.email },'password', (err, worker) => {
+        bcrypt.compare(pass, worker.password, function(err, res) {
+          if (err)return console.log({ message: err })
+          isMatch(res)
+        });
+    });
+
+}
 
 module.exports = mongoose.model('Worker',WorkerSchema)

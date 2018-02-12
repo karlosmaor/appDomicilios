@@ -7,8 +7,8 @@ const auth = require('../middlewares/auth')
 //const ClientCtrl = require('../controllers/client')
 const DeliveryCtrl  = require('../controllers/delivery')
 const DomiciliarioCtrl  = require('../controllers/domiciliario')
-/*const workerCtrl  = require('../controllers/worker')
-
+const workerCtrl  = require('../controllers/worker')
+/*
 //----------------Rutas Cliente-------------//
 
 api.get('/clients', ClientCtrl.getClients)
@@ -35,10 +35,11 @@ api.put('/domiciliario/:domiciliarioId', DomiciliarioCtrl.updateDomiciliario)
 api.delete('/domiciliario/:domiciliarioId', DomiciliarioCtrl.deleteDomiciliario)
 
 //----------------Rutas para worker--------------------//
-/*
+
 api.get('/workers', workerCtrl.getWorkers)
 api.get('/worker/:workerId', workerCtrl.getWorker)
-api.post('/worker', workerCtrl.saveWorker)
+api.post('/worker/signup', workerCtrl.signUp)
+api.post('/worker/signin', workerCtrl.signIn)
 api.put('/worker/:workerId', workerCtrl.updateWorker)
 api.delete('/worker/:workerId', workerCtrl.deleteWorker)
 

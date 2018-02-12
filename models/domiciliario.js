@@ -23,9 +23,9 @@ const DomiciliarioSchema = new Schema({
 })
 
 DomiciliarioSchema.pre('save',function(next){
-  console.log('Exitoooo');
+
   let dom = this
-  if(dom.password == "") return next()
+  if(dom.password == undefined) return next()
 
   bcrypt.genSalt(10, (err,salt)=>{
     if(err) return next()
