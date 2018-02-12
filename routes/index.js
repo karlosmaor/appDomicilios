@@ -16,7 +16,7 @@ api.get('/client/:clientId', ClientCtrl.getClient)
 api.post('/client/signup', ClientCtrl.signUp)
 api.post('/client/signin', ClientCtrl.signIn)
 api.put('/client/:clientId', ClientCtrl.updateClient)
-api.delete('/client/:clientId', ClientCtrl.deleteClient)*/
+api.delete('/client/:clientId', ClientCtrl.deleteClient)
 
 //---------------Rutas para entregas----------//
 
