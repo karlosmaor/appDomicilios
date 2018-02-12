@@ -35,7 +35,7 @@ WorkerSchema.pre('save',function(next){
 WorkerSchema.methods.comparePass = function (pass,isMatch) {
   mongoose.model('Worker', WorkerSchema).findOne({ email: this.email },'password', (err, worker) => {
         bcrypt.compare(pass, worker.password, function(err, res) {
-          if (err)return console.log({ message: err })
+          if (err)return console.log({ mensaje: err })
           isMatch(res)
         });
     });
