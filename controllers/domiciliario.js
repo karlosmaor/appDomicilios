@@ -31,7 +31,7 @@ function updateDomiciliario(req,res){
 
   Domiciliario.findByIdAndUpdate(domiciliarioId, update, (err, domiciliarioUpdated) =>{
     if(err) return res.status(500).send({message:`Error al editar el domiciliario en la base de datos ${err}`})
-
+    console.log(update.password);
     if(update.password != ""){
       console.log('si entra, mierda');
       Domiciliario.findById(domiciliarioId, (err, dom)=>{
