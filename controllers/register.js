@@ -14,7 +14,7 @@ function getRegister(req,res){
   })
 }
 
-function getDeliveries(req, res){
+function getRegisters(req, res){
   Register.find({}, (err, deliveries)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(deliveries.length == 0)return res.status(404).send({message:'No hay registros'})
