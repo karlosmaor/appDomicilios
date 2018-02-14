@@ -8,6 +8,7 @@ const ClientCtrl = require('../controllers/client')
 const DeliveryCtrl  = require('../controllers/delivery')
 const DomiciliarioCtrl  = require('../controllers/domiciliario')
 const workerCtrl  = require('../controllers/worker')
+const RegisterCtrl = require('../controllers/register')
 
 //----------------Rutas Cliente-------------//
 
@@ -43,6 +44,14 @@ api.post('/worker/signup', workerCtrl.signUp)
 api.post('/worker/signin', workerCtrl.signIn)
 api.put('/worker/:workerId', workerCtrl.updateWorker)
 api.delete('/worker/:workerId', workerCtrl.deleteWorker)
+
+//---------------Rutas para registros----------//
+
+api.get('/registers', RegisterCtrl.getRegisters)
+api.get('/register/:registerId', RegisterCtrl.getRegister)
+api.post('/register', RegisterCtrl.saveRegister)
+api.put('/register/:registerId', RegisterCtrl.updateRegister)
+api.delete('/register/:registerId', RegisterCtrl.deleteRegister)
 
 /*api.get('/private', auth, function(req,res){
   res.status(200).send({message:'Tienes acceso'})

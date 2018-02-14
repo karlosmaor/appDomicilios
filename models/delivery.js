@@ -3,7 +3,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const DeliveySchema = new Schema({
+const DeliverySchema = new Schema({
   client: String,
   domiciliario: String,
   addressStart: String,
@@ -14,4 +14,4 @@ const DeliveySchema = new Schema({
 })
 
 
-module.exports = mongoose.model('Delivery',DeliveySchema)
+module.exports = mongoose.model('Delivery',DeliverySchema)
