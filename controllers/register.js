@@ -26,7 +26,7 @@ function getRegisters(req, res){
 function saveRegister(req,res){
 
   let register = new Register()
-  register.worker = req.body.client
+  register.worker = req.body.worker
   register.domiciliario = req.body.domiciliario
 
   register.save((err, registerStored)=>{
