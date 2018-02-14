@@ -60,7 +60,7 @@ function deleteRegister(req,res){
 
 module.exports ={
   getRegister,
-  getDeliveries,
+  getRegisters,
   saveRegister,
   updateRegister,
   deleteRegister
