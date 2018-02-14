@@ -6,7 +6,7 @@ function getDelivery(req,res){
   let deliveryId = req.params.deliveryId
 
   Delivery.findById(deliveryId, (err, delivery) => {
-    console.log(err)
+    
     if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(!delivery) return res.status(404).send({message:'Esa entrega no existe'})
 

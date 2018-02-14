@@ -6,7 +6,7 @@ function getRegister(req,res){
   let registerId = req.params.registerId
 
   Register.findById(registerId, (err, register) => {
-    console.log(err)
+    
     if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(!register) return res.status(404).send({message:'Ese registro no existe'})
 

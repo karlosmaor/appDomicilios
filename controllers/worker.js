@@ -8,7 +8,7 @@ function getWorker(req,res){
   let workerId = req.params.workerId
 
   Worker.findById(workerId, (err, worker) => {
-    console.log(err)
+    
     if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(!worker) return res.status(404).send({message:'El Worker no existe'})
 
