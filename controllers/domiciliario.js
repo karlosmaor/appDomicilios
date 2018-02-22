@@ -12,7 +12,7 @@ function getDomiciliario(req,res){
     if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(!domiciliario) return res.status(404).send({message:'El domiciliario no existe'})
 
-  res.status(200).send({domiciliario})
+  res.status(200).send(domiciliario)
   })
 }
 
@@ -21,7 +21,7 @@ function getDomiciliarios(req, res){
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(domiciliarios.length == 0)return res.status(404).send({message:'No hay domiciliarios registrados'})
 
-    res.status(200).send({ domiciliarios })
+    res.status(200).send( domiciliarios )
   })
 }
 
