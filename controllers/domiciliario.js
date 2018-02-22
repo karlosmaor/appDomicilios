@@ -86,7 +86,7 @@ function signUp(req,res){
 function signIn(req,res){
   Domiciliario.findOne({email: req.body.email}, (err, domiciliario)=>{
     if(err) return res.status(500).send({message: err})
-    if(!domiciliario) return re.status(404).send({
+    if(!domiciliario) return res.status(404).send({
       message: 'No existe el usuario'
     })
 
