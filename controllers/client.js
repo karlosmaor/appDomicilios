@@ -8,7 +8,7 @@ function getClient(req,res){
   let clientId = req.params.clientId
 
   Client.findById(clientId, (err, client) => {
-    
+
     if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(!client) return res.status(404).send({message:'El Client no existe'})
 
@@ -67,6 +67,7 @@ function signUp(req,res){
   client.avatar = req.body.avatar
   client.phone = req.body.phone
   client.address = req.body.address
+  client.category = req.body.category
 
   Client.find({email: req.body.email}, (err,clien) =>{
     if(err) return res.status(500).send({message: err})

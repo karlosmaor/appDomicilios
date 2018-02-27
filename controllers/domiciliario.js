@@ -64,6 +64,7 @@ function signUp(req,res){
   domiciliario.email = req.body.email
   domiciliario.password = req.body.password
   domiciliario.name = req.body.name
+  domiciliario.id = req.body.id
   domiciliario.avatar = req.body.avatar
   domiciliario.phone = req.body.phone
   domiciliario.category = req.body.category
@@ -112,7 +113,7 @@ function signIn(req,res){
 function prueba(req,res){
   res.status(200).send(req.body)
 
-  
+
   console.log(req.body)
 }
 
