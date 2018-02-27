@@ -10,7 +10,7 @@ const DomiciliarioSchema = new Schema({
   name: String,
   avatar: String,
   phone: String,
-  id: {type: String, unique: true, required: true},
+  Identity: {type: String, unique: true, required: true},
   coins: {type: Number, default: 0},
   deliveries: [String],
   position: {
