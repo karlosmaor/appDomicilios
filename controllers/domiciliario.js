@@ -73,6 +73,12 @@ function signUp(req,res){
 
     if(dom.length != 0) return res.status(500).send({message: 'EL correo ya existe en nuestra base de datos'})
 
+    Domiciliario.find({id: req.body.id}, (err,dom2) =>{
+      if(err) return res.status(500).send({message: err})
+
+      if(dom2.length != 0)return res.status(500).send({message: 'El numero de identificación ya existe en nuestra base de datos'})
+    })
+
     domiciliario.save((err)=>{
       if(err) return res.status(500).send({message: `Error registrando nuevo domiciliario: ${err}`})
 

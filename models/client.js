@@ -12,6 +12,7 @@ const ClientSchema = new Schema({
   phone: String,
   address: String,
   deliveries: [String],
+  category: String,
   position: {
     lat: {type: Number, default: 0.0},
     lng: {type: Number, default: 0.0}
