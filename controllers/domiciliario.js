@@ -83,7 +83,10 @@ function signUp(req,res){
     domiciliario.save((err)=>{
       if(err) return res.status(500).send({message: `Error registrando nuevo domiciliario: ${err}`})
 
-      res.status(201).send({token: service.createToken(domiciliario)})
+      res.status(201).send({
+        token: service.createToken(domiciliario),
+        domiciliario: domiciliario
+      })
     })
 
   })
