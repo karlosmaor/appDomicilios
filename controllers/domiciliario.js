@@ -109,6 +109,9 @@ function signIn(req,res){
   })
 }
 
+function prueba(req,res){
+  res.status(200).send(req.body)
+}
 
 module.exports = {
   getDomiciliario,
@@ -116,5 +119,6 @@ module.exports = {
   deleteDomiciliario,
   updateDomiciliario,
   signUp,
-  signIn
+  signIn,
+  prueba
 }
