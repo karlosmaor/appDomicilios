@@ -53,6 +53,8 @@ function deleteDomiciliario(req,res){
   Domiciliario.findById(domiciliarioId, (err, domiciliario) =>{
     if(err) return res.status(500).send({message:`Error al eliminar al domiciliario de la base de datos ${err}`})
 
+    if(domiciliario == null)return res.status(404).send({message:'Domiciliario no encontrado'})
+
     domiciliario.remove(err =>{
         if(err)return res.status(500).send({message:`Error al borrar el domiciliario de la base de datos ${err}`})
         res.status(200).send({message:'El domiciliario ha sido borrado.'})
