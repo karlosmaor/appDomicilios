@@ -29,6 +29,7 @@ function updateDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
   let update = req.body
 
+
   Domiciliario.findByIdAndUpdate(domiciliarioId, update, (err, domiciliarioUpdated) =>{
     if(err) return res.status(500).send({message:`Error al editar el domiciliario en la base de datos ${err}`})
 
