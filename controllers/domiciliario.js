@@ -116,19 +116,11 @@ function signIn(req,res){
   })
 }
 
-function prueba(req,res){
-  res.status(200).send(req.body)
-
-
-  console.log(req.body)
-}
-
 module.exports = {
   getDomiciliario,
   getDomiciliarios,
   deleteDomiciliario,
   updateDomiciliario,
   signUp,
-  signIn,
-  prueba
+  signIn
 }

@@ -34,7 +34,6 @@ api.get('/domiciliario/:domiciliarioId', DomiciliarioCtrl.getDomiciliario)
 api.post('/domiciliario/signup', DomiciliarioCtrl.signUp)
 api.post('/domiciliario/signin', DomiciliarioCtrl.signIn)
 api.post('/domiciliario/:domiciliarioId', DomiciliarioCtrl.updateDomiciliario)
-api.put('/domiciliario/prueba', DomiciliarioCtrl.prueba)
 api.put('/domiciliario/:domiciliarioId', DomiciliarioCtrl.updateDomiciliario)
 api.delete('/domiciliario/:domiciliarioId', DomiciliarioCtrl.deleteDomiciliario)
 
