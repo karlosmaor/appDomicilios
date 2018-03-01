@@ -75,12 +75,12 @@ function signUp(req,res){
   Domiciliario.find({email: req.body.email}, (err,dom) =>{
     if(err) return res.status(500).send({message: err})
 
-    if(dom.length != 0) return res.status(500).send({message: 'EL correo ya existe en nuestra base de datos'})
+    if(dom.length != 0) return res.status(501).send({message: 'EL correo ya existe en nuestra base de datos'})
 
     Domiciliario.find({id: req.body.id}, (err,dom) =>{
       if(err) return res.status(500).send({message: err})
 
-      if(dom.length != 0) return res.status(500).send({message: 'El numero de identificación ya existe en nuestra base de datos'})
+      if(dom.length != 0) return res.status(502).send({message: 'El numero de identificación ya existe en nuestra base de datos'})
 
       domiciliario.save((err)=>{
         if(err) return res.status(500).send({message: `Error registrando nuevo domiciliario: ${err}`})
@@ -90,7 +90,6 @@ function signUp(req,res){
           domiciliario: domiciliario
         })
       })
-      
     })
   })
 
