@@ -118,5 +118,6 @@ module.exports = {
   deleteWorker,
   updateWorker,
   signUp,
-  signIn
+  signIn,
+  search
 }
