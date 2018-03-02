@@ -9,7 +9,6 @@ const WorkerSchema = new Schema({
   password: {type:String, select:false, required: true},
   name: String,
   id: {type: String, unique: true, required: true},
-  avatar: String,
   phone: String,
   address: String,
   signupDate: {type: Date, default: Date.now()},

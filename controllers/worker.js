@@ -64,7 +64,6 @@ function signUp(req,res){
   worker.email = req.body.email
   worker.password = req.body.password
   worker.name = req.body.name
-  worker.avatar = req.body.avatar
   worker.phone = req.body.phone
   worker.address = req.body.address
   worker.rank = req.body.rank
@@ -100,6 +99,15 @@ function signIn(req,res){
         res.status(401).send({error: 'Contraseña incorrecta'})
       }
     })
+  })
+}
+
+function search(req, res){
+  Worker.find(req.body, (err, workers)=>{
+    if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
+    if(workers.length == 0)return res.status(501).send({message:'No hay workers registrados'})
+
+    res.status(200).send( workers )
   })
 }
 

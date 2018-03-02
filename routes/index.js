@@ -44,6 +44,8 @@ api.get('/workers', workerCtrl.getWorkers)
 api.get('/worker/:workerId', workerCtrl.getWorker)
 api.post('/worker/signup', workerCtrl.signUp)
 api.post('/worker/signin', workerCtrl.signIn)
+api.post('/worker/search', workerCtrl.search)
+api.post('/worker/:workerId', workerCtrl.updateWorker)
 api.put('/worker/:workerId', workerCtrl.updateWorker)
 api.delete('/worker/:workerId', workerCtrl.deleteWorker)
 
