@@ -16,6 +16,8 @@ api.get('/clients', ClientCtrl.getClients)
 api.get('/client/:clientId', ClientCtrl.getClient)
 api.post('/client/signup', ClientCtrl.signUp)
 api.post('/client/signin', ClientCtrl.signIn)
+api.post('/client/search', ClientCtrl.search)
+api.post('/client/:clientId', ClientCtrl.updateClient)
 api.put('/client/:clientId', ClientCtrl.updateClient)
 api.delete('/client/:clientId', ClientCtrl.deleteClient)
 
