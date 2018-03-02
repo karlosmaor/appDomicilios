@@ -11,6 +11,7 @@ const DomiciliarioSchema = new Schema({
   avatar: String,
   phone: String,
   id: {type: String, unique: true, required: true},
+  category: String,
   coins: {type: Number, default: 0},
   debt: {type: Number, default: 0},
   deliveries: [String],
@@ -20,8 +21,6 @@ const DomiciliarioSchema = new Schema({
   },
   signupDate: {type: Date, default: Date.now()},
   lastLogin: Date,
-  category: String,
-
 })
 
 DomiciliarioSchema.pre('save',function(next){

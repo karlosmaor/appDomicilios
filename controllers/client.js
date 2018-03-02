@@ -19,7 +19,7 @@ function getClient(req,res){
 function getClients(req, res){
   Client.find({}, (err, clients)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
-    if(clients.length == 0)return res.status(404).send({message:'No hay Clients registrados'})
+    if(clients.length == 0)return res.status(501).send({message:'No hay Clients registrados'})
 
     res.status(200).send(clients)
   })
@@ -72,7 +72,7 @@ function signUp(req,res){
   Client.find({email: req.body.email}, (err,clien) =>{
     if(err) return res.status(500).send({message: err})
 
-    if(clien.length != 0) return res.status(500).send({message: 'EL correo ya existe en nuestra base de datos'})
+    if(clien.length != 0) return res.status(501).send({message: 'EL correo ya existe en nuestra base de datos'})
 
     client.save((err)=>{
       if(err) return res.status(500).send({message: `Error registrando nuevo Client: ${err}`})
@@ -102,6 +102,14 @@ function signIn(req,res){
   })
 }
 
+function search(req, res){
+  Client.find(req.body, (err, clients)=>{
+    if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
+    if(clients.length == 0)return res.status(501).send({message:'No hay clientes registrados'})
+
+    res.status(200).send( clients )
+  })
+}
 
 module.exports = {
   getClient,
@@ -109,5 +117,6 @@ module.exports = {
   deleteClient,
   updateClient,
   signUp,
-  signIn
+  signIn,
+  search
 }
