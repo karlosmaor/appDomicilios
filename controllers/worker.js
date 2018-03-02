@@ -19,7 +19,7 @@ function getWorker(req,res){
 function getWorkers(req, res){
   Worker.find({}, (err, workers)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
-    if(workers.length == 0)return res.status(404).send({message:'No hay Workers registrados'})
+    if(workers.length == 0)return res.status(501).send({message:'No hay Workers registrados'})
 
     res.status(200).send(workers)
   })
