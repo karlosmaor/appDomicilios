@@ -26,6 +26,7 @@ api.delete('/client/:clientId', ClientCtrl.deleteClient)
 api.get('/deliveries', DeliveryCtrl.getDeliveries)
 api.get('/delivery/:deliveryId', DeliveryCtrl.getDelivery)
 api.post('/delivery', DeliveryCtrl.saveDelivery)
+api.post('/delivery/:deliveryId', DeliveryCtrl.updateDelivery)
 api.put('/delivery/:deliveryId', DeliveryCtrl.updateDelivery)
 api.delete('/delivery/:deliveryId', DeliveryCtrl.deleteDelivery)
 
