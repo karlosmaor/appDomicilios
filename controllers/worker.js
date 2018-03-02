@@ -72,12 +72,18 @@ function signUp(req,res){
   Worker.find({email: req.body.email}, (err,wor) =>{
     if(err) return res.status(500).send({message: err})
 
-    if(wor.length != 0) return res.status(500).send({message: 'EL correo ya existe en nuestra base de datos'})
+    if(wor.length != 0) return res.status(501).send({message: 'EL correo ya existe en nuestra base de datos'})
 
-    worker.save((err)=>{
-      if(err) return res.status(500).send({message: `Error registrando nuevo Worker: ${err}`})
+    Worker.find({id: req.body.id}, (err,wor) =>{
+      if(err) return res.status(500).send({message: err})
 
-      res.status(201).send({token: service.createToken(worker)})
+      if(wor.length != 0) return res.status(502).send({message: 'EL numero de cédula ya existe en nuestra base de datos'})
+
+      worker.save((err)=>{
+        if(err) return res.status(500).send({message: `Error registrando nuevo Worker: ${err}`})
+
+        res.status(201).send({token: service.createToken(worker)})
+      })
     })
   })
 }
