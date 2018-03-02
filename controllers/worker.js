@@ -8,7 +8,7 @@ function getWorker(req,res){
   let workerId = req.params.workerId
 
   Worker.findById(workerId, (err, worker) => {
-    
+
     if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(!worker) return res.status(404).send({message:'El Worker no existe'})
 
@@ -68,6 +68,7 @@ function signUp(req,res){
   worker.phone = req.body.phone
   worker.address = req.body.address
   worker.rank = req.body.rank
+  worker.id = req.body.id
 
   Worker.find({email: req.body.email}, (err,wor) =>{
     if(err) return res.status(500).send({message: err})
