@@ -92,12 +92,6 @@ function signUp(req,res){
       })
     })
   })
-
-
-
-
-
-
 }
 
 function signIn(req,res){
@@ -120,11 +114,21 @@ function signIn(req,res){
   })
 }
 
+function search(req, res){
+  Domiciliario.find(req.body, (err, domiciliarios)=>{
+    if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
+    if(domiciliarios.length == 0)return res.status(501).send({message:'No hay domiciliarios registrados'})
+
+    res.status(200).send( domiciliarios )
+  })
+}
+
 module.exports = {
   getDomiciliario,
   getDomiciliarios,
   deleteDomiciliario,
   updateDomiciliario,
   signUp,
-  signIn
+  signIn,
+  search
 }
