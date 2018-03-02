@@ -31,6 +31,7 @@ function saveDelivery(req,res){
   delivery.addressStart = req.body.addressStart
   delivery.addressEnd = req.body.addressEnd
   delivery.category = req.body.category
+  delivery.state = req.body.state
 
   delivery.save((err, deliveryStored)=>{
     if(err){
