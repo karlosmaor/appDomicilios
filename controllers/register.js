@@ -8,7 +8,7 @@ function getRegister(req,res){
   Register.findById(registerId, (err, register) => {
 
     if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
-    if(!register) return res.status(501).send({message:'Ese registro no existe'})
+    if(!register) return res.status(404).send({message:'Ese registro no existe'})
 
   res.status(200).send(register)
   })
@@ -17,7 +17,7 @@ function getRegister(req,res){
 function getRegisters(req, res){
   Register.find({}, (err, deliveries)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
-    if(deliveries.length == 0)return res.status(404).send({message:'No hay registros'})
+    if(deliveries.length == 0)return res.status(501).send({message:'No hay registros'})
 
     res.status(200).send(deliveries)
   })
