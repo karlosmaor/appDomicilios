@@ -81,5 +81,6 @@ module.exports ={
   getRegisters,
   saveRegister,
   updateRegister,
-  deleteRegister
+  deleteRegister,
+  search
 }
