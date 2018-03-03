@@ -64,6 +64,23 @@ function deleteDelivery(req,res){
   })
 }
 
+function searchDelivery(req,res){
+  let date1 = req.body.date1
+  let date2 = req.body.date2
+  Delivery.Find({
+    date: {
+      '$gte': new Timestamp(new Date(2018,3,1),0),
+      '$lte': new Timestamp(new Date(2018,3,3),0)
+    }
+  },(err, deliveries) => {
+    if(err)return res.status(500).send({message:`Error: ${err}`})
+
+    if(deliveries.length == 0) return res.status(501).send({message:'No hay entregas'})
+
+    res.status(200).send(deliveries)
+  })
+}
+
 module.exports ={
   getDelivery,
   getDeliveries,
