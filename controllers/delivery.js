@@ -47,10 +47,7 @@ function saveDelivery(req,res){
       client.deliveries.push(deliveryStored._id)
       client.save((err)=>{
         if(err)return res.status(500).send(err)
-        res.status(200).send({
-          delivery: deliveryStored,
-          cliente: client
-        })
+        res.status(200).send({delivery: deliveryStored})
       })
     })
   })
