@@ -84,11 +84,21 @@ function search(req,res){
   })
 }
 
+function searchState(req, res){
+  Delivery.find(req.body, (err, deliveries)=>{
+    if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
+    if(deliveries.length == 0)return res.status(501).send({message:'No hay entregas'})
+
+    res.status(200).send(deliveries)
+  })
+}
+
 module.exports ={
   getDelivery,
   getDeliveries,
   saveDelivery,
   updateDelivery,
   deleteDelivery,
-  search
+  search,
+  searchState
 }
