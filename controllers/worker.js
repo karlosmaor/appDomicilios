@@ -91,7 +91,7 @@ function signUp(req,res){
 function signIn(req,res){
   Worker.findOne({email: req.body.email}, (err, worker)=>{
     if(err) return res.status(500).send({message: err})
-    if(!worker) return re.status(404).send({
+    if(!worker) return res.status(404).send({
       message: 'No existe el usuario'
     })
 
