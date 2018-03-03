@@ -86,5 +86,6 @@ module.exports ={
   getDeliveries,
   saveDelivery,
   updateDelivery,
-  deleteDelivery
+  deleteDelivery,
+  searchDelivery
 }
