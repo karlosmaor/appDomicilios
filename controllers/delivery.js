@@ -69,11 +69,11 @@ function search(req,res){
   let date1 = req.body.date1
   let date2 = req.body.date2
   console.log(new Date(date1));
-  console.log(new Date(date2)); 
+  console.log(new Date(date2));
   Delivery.find({
     date: {
-      '$gte': new Date(2018,2,1),
-      '$lte': new Date(2018,2,3)
+      '$gte': new Date(date1),
+      '$lte': new Date(date2)
     }
   },(err, deliveries) => {
     if(err)return res.status(500).send({message:`Error: ${err}`})
