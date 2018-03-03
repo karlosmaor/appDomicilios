@@ -64,7 +64,7 @@ function deleteDelivery(req,res){
   })
 }
 
-function searchDelivery(req,res){
+function search(req,res){
   let date1 = req.body.date1
   let date2 = req.body.date2
   Delivery.Find({
@@ -87,5 +87,5 @@ module.exports ={
   saveDelivery,
   updateDelivery,
   deleteDelivery,
-  searchDelivery
+  search
 }

@@ -27,7 +27,7 @@ api.get('/deliveries', DeliveryCtrl.getDeliveries)
 api.get('/delivery/:deliveryId', DeliveryCtrl.getDelivery)
 api.post('/delivery', DeliveryCtrl.saveDelivery)
 api.post('/delivery/:deliveryId', DeliveryCtrl.updateDelivery)
-api.post('/delivery/searchdate', DeliveryCtrl.searchDelivery)
+api.post('/delivery/search', DeliveryCtrl.search)
 api.put('/delivery/:deliveryId', DeliveryCtrl.updateDelivery)
 api.delete('/delivery/:deliveryId', DeliveryCtrl.deleteDelivery)
 
