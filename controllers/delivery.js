@@ -44,6 +44,7 @@ function saveDelivery(req,res){
 }
 
 function updateDelivery(req,res){
+  console.log("estoy actualizando")
   let deliveryId = req.params.deliveryId
   let update = req.body
   Delivery.findByIdAndUpdate(deliveryId, update,  (err, deliveryUpdated) =>{
