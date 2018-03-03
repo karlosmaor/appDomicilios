@@ -15,11 +15,11 @@ function getRegister(req,res){
 }
 
 function getRegisters(req, res){
-  Register.find({}, (err, deliveries)=>{
+  Register.find({}, (err, registers)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
-    if(deliveries.length == 0)return res.status(501).send({message:'No hay registros'})
+    if(registers.length == 0)return res.status(501).send({message:'No hay registros'})
 
-    res.status(200).send(deliveries)
+    res.status(200).send(registers)
   })
 }
 
@@ -55,6 +55,24 @@ function deleteRegister(req,res){
         if(err)return res.status(500).send({message:`Error al borrar el registro de la base de datos ${err}`})
         res.status(200).send({message:'El registro ha sido borrada.'})
     })
+  })
+}
+
+function search(req,res){
+  let date1 = req.body.date1
+  let date2 = req.body.date2
+
+  Register.find({
+    date: {
+      '$gte': new Date(date1),
+      '$lte': new Date(date2)
+    }
+  },(err, registers) => {
+    if(err)return res.status(500).send({message:`Error: ${err}`})
+
+    if(registers.length == 0) return res.status(501).send({message:'No hay entregas'})
+
+    res.status(200).send(registers)
   })
 }
 

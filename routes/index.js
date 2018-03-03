@@ -59,6 +59,8 @@ api.delete('/worker/:workerId', workerCtrl.deleteWorker)
 api.get('/registers', RegisterCtrl.getRegisters)
 api.get('/register/:registerId', RegisterCtrl.getRegister)
 api.post('/register', RegisterCtrl.saveRegister)
+api.post('/register/buscar/fecha', DeliveryCtrl.search)
+api.post('/register/:registerId', RegisterCtrl.updateRegister)
 api.put('/register/:registerId', RegisterCtrl.updateRegister)
 api.delete('/register/:registerId', RegisterCtrl.deleteRegister)
 
