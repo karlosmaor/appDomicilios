@@ -1,6 +1,7 @@
 'use strict'
 
 const Delivery =  require('../models/delivery')
+const Client = require('../models/client')
 
 function getDelivery(req,res){
   let deliveryId = req.params.deliveryId
@@ -36,10 +37,22 @@ function saveDelivery(req,res){
   delivery.positionEnd = req.body.positionEnd
 
   delivery.save((err, deliveryStored)=>{
-    if(err){
-      res.status(500).send({message :`Error al guardar la entrega en la base de datos: ${err}`})
-    }
-    res.status(200).send({delivery: deliveryStored})
+    if(err)return res.status(500).send({message :`Error al guardar la entrega en la base de datos: ${err}`})
+    let clientId = deliveryStored.client
+
+    Client.findById(clientId, (err, client) => {
+
+      if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
+      if(!client) return res.status(404).send({message:'El Client no existe'})
+      client.deliveries.push(deliveryStored._id)
+      client.save((err)=>{
+        if(err)return res.status(500).send(err)
+        res.status(200).send({
+          delivery: deliveryStored,
+          cliente: client
+        })
+      })
+    })
   })
 }
 
@@ -68,7 +81,7 @@ function deleteDelivery(req,res){
 function search(req,res){
   let date1 = req.body.date1
   let date2 = req.body.date2
-  
+
   Delivery.find({
     date: {
       '$gte': new Date(date1),

@@ -38,7 +38,7 @@ function updateClient(req,res){
         if(err) return res.status(500).send(err)
         client.password = update.password
         client.save((err)=>{
-          if(err) res.status(500).send(err)
+          if(err)return res.status(500).send(err)
 
         })
       })
