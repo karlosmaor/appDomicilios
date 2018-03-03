@@ -68,8 +68,8 @@ function deleteDelivery(req,res){
 function search(req,res){
   let date1 = req.body.date1
   let date2 = req.body.date2
-  console.log(new Date(2018,2,1));
-  console.log(new Date(2018,2,3)); 
+  console.log(new Date(date1));
+  console.log(new Date(date2)); 
   Delivery.find({
     date: {
       '$gte': new Date(2018,2,1),
