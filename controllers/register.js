@@ -92,5 +92,6 @@ module.exports ={
   saveRegister,
   updateRegister,
   deleteRegister,
-  search
+  search,
+  searchState
 }
