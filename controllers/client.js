@@ -111,6 +111,26 @@ function search(req, res){
   })
 }
 
+function getCreate(req,res){
+  Client.findOne({email: req.body.email}, (err, client)=>{
+    if(err) return res.status(500).send({message: err})
+    if(!client){
+      const cliente = new Client()
+      cliente.email = req.body.email
+      cliente.password = req.body.password
+      cliente.name = req.body.name
+      cliente.phone = req.body.phone
+      cliente.category = req.body.category
+      cliente.save((err)=>{
+        if(err) return res.status(500).send({message: `Error registrando nuevo cliente: ${err}`})
+        res.status(200).send(cliente)
+      })
+    }else{
+      res.status(200).send(client)
+    }
+  })
+}
+
 module.exports = {
   getClient,
   getClients,
@@ -118,5 +138,6 @@ module.exports = {
   updateClient,
   signUp,
   signIn,
-  search
+  search,
+  getCreate
 }
