@@ -28,10 +28,12 @@ function saveRegister(req,res){
   let register = new Register()
   register.worker = req.body.worker
   register.domiciliario = req.body.domiciliario
+  register.coins = req.body.coins
+  register.debt = req.body.debt
 
   register.save((err, registerStored)=>{
     if(err)return res.status(500).send({message :`Error al guardar el registro en la base de datos: ${err}`})
-    
+
     res.status(200).send({register: registerStored})
   })
 }
