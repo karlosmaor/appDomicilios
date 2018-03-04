@@ -30,9 +30,8 @@ function saveRegister(req,res){
   register.domiciliario = req.body.domiciliario
 
   register.save((err, registerStored)=>{
-    if(err){
-      res.status(500).send({message :`Error al guardar el registro en la base de datos: ${err}`})
-    }
+    if(err)return res.status(500).send({message :`Error al guardar el registro en la base de datos: ${err}`})
+    
     res.status(200).send({register: registerStored})
   })
 }
