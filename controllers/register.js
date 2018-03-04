@@ -77,6 +77,15 @@ function search(req,res){
   })
 }
 
+function searchState(req, res){
+  Register.find(req.body, (err, registers)=>{
+    if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
+    if(registers.length == 0)return res.status(501).send({message:'No hay entregas'})
+
+    res.status(200).send(registers)
+  })
+}
+
 module.exports ={
   getRegister,
   getRegisters,
