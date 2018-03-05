@@ -46,7 +46,7 @@ function updateDomiciliario(req,res){
       })
     }
     if(domiciliarioUpdated == undefined) return res.status(500).send('No se encontró el domiciliario.')
-    res.status(200).send('hola Juanda')
+    res.status(200).send(domiciliarioUpdated)
   })
 }
 
