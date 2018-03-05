@@ -47,7 +47,7 @@ function updateDomiciliario(req,res){
         })
       })
     }}*/
-    res.status(200).send(domiciliarioUpdated)
+    res.status(200).send('hola Juanda')
   })
 }
 
