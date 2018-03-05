@@ -26,8 +26,9 @@
       // When the user clicks the marker, an info window opens.
 
       function initMap() {
+        console.log('<%=idDomiciliario%>');
 
-        fetch('http://146.71.79.215:3002/domicilios/domiciliario/'+'<%=idDomiciliario%>',{
+        fetch('http://146.71.79.215:3002/domicilios/maps/5a9d8828db886793327ed0e8',{
           method: 'GET'
         })
         .then(res => res.json())
