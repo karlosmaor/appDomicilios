@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express')
-const fs = require('file-system')
+var fs = require('file-system')
 const api = express.Router()
 const auth = require('../middlewares/auth')
 
@@ -69,7 +69,7 @@ api.delete('/register/:registerId', RegisterCtrl.deleteRegister)
 
 //---------------Rutas para mapas------------------//
 api.get('/maps',function(req, res){
-    fs.readFile('../mymap/index.html');
+    fs.readFile('./appDomicilios/appDomicilios/mymap/index.html');
 })
 
 /*api.get('/private', auth, function(req,res){
