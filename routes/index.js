@@ -66,6 +66,10 @@ api.post('/register/:registerId', RegisterCtrl.updateRegister)
 api.put('/register/:registerId', RegisterCtrl.updateRegister)
 api.delete('/register/:registerId', RegisterCtrl.deleteRegister)
 
+//-----------------Rutas para mapas-----------------------------//
+api.get('/maps/:mapData',function(req,res){
+  res.render(index.ejs)
+})
 /*api.get('/private', auth, function(req,res){
   res.status(200).send({message:'Tienes acceso'})
 })*/
