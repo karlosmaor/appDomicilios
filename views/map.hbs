@@ -5,7 +5,7 @@
   // When the user clicks the marker, an info window opens.
 
   function initMap() {
-
+    console.log('inicio');
     var uluru = {lat: -25.363, lng: 131.044};
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 4,
@@ -26,6 +26,7 @@
     marker.addListener('click', function() {
       infowindow.open(map, marker);
     });
+    console.log('Funcion terminada');
   }
 </script>
 <script async defer

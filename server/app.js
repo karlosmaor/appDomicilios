@@ -15,8 +15,9 @@ app.engine('.hbs', hbs({
 app.set('view engine','.hbs')
 
 app.use('/domicilios',api)
+
 app.get('/maps', function(req,res){
-  res.render('../views/map')
+  res.render('map')
 })
 
 module.exports = app
