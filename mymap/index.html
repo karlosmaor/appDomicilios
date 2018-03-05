@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Info windows</title>
+    <title>DomiciliosApp</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -21,6 +21,10 @@
   <body>
     <div id="map"></div>
     <script>
+
+      function(req,res){
+        console.log(req.params.mapData);
+      }
 
       // This example displays a marker at the center of Australia.
       // When the user clicks the marker, an info window opens.

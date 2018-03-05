@@ -67,7 +67,7 @@ api.put('/register/:registerId', RegisterCtrl.updateRegister)
 api.delete('/register/:registerId', RegisterCtrl.deleteRegister)
 
 //---------------Rutas para mapas------------------//
-api.get('/maps', function(req,res){
+api.get('/maps/:mapData', function(req,res){
   res.sendFile('/home/carlosmaor2/appDomicilios/appDomicilios/mymap/index.html')
 })
 
