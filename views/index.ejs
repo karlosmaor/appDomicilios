@@ -27,6 +27,13 @@
 
       function initMap() {
         console.log('<%=data%>');
+
+        fetch('http://146.71.79.215:3002/domicilios/domiciliario/5a9d8828db886793327ed0e8',{
+          method: 'GET'
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+
         var uluru = {lat: -25.363, lng: 131.044};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
