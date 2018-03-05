@@ -27,15 +27,16 @@
 
       function initMap() {
 
-        var domiciliario
         fetch('http://146.71.79.215:3002/domicilios/domiciliario/'+'<%=idDomiciliario%>',{
           method: 'GET'
         })
         .then(res => res.json())
         .then(data => {
-          domiciliario = data
+          loadMap(data)
         })
+      }
 
+      function loadMap(domiciliario){
         var uluru = domiciliario.position
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 7,
