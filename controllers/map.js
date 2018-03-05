@@ -22,7 +22,7 @@ function showDomiciliario(req,res){
     res,status(200).send(domiciliarios)
 //    res.render('index.ejs',{doms: domiciliarios})
   })
-})
+}
 
 
 module.exports = {
