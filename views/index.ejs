@@ -33,7 +33,7 @@
           center: uluru
         });
 
-        var contentString = 'holi';
+        var contentString = <%=data%>;
 
         var infowindow = new google.maps.InfoWindow({
           content: contentString
@@ -42,7 +42,7 @@
         var marker = new google.maps.Marker({
           position: uluru,
           map: map,
-          title: 'Uluru (Ayers Rock)'
+          title: <%=data%>
         });
         marker.addListener('click', function() {
           infowindow.open(map, marker);
