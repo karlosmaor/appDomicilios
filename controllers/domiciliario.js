@@ -27,26 +27,26 @@ function getDomiciliarios(req, res){
 
 function updateDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
+
   let update = req.body
-  if(update.position != undefined)update.position = JSON.parse(update.position)
+  if(update.position != undefined) update.position = JSON.parse(update.position)
 
 /*  let update = JSON.parse(req.body)
   console.log(update);*/
 
   Domiciliario.findByIdAndUpdate(domiciliarioId, update, (err, domiciliarioUpdated) =>{
     if(err) return res.status(500).send({message:`Error al editar el domiciliario en la base de datos ${err}`})
-
+    /*
     if(update.password != undefined){
-
       Domiciliario.findById(domiciliarioId, (err, dom)=>{
         if(err) return res.status(500).send(err)
         dom.password = update.password
         dom.save((err)=>{
-          if(err) res.status(500).send(err)
+          if(err) return res.status(500).send(err)
 
         })
       })
-    }
+    }}*/
     res.status(200).send(domiciliarioUpdated)
   })
 }
