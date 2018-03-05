@@ -125,6 +125,14 @@ function search(req, res){
   })
 }
 
+function GetArrayDomiciliario(req, res){
+  Domiciliario.find({_id: {$in: ["5a9d8828db886793327ed0e8","5a9889dc0a09484f2263fb0c"]}}, function(err, domiciliarios){
+    if(err)return res.status(500).send(err)
+
+    res.status(200).send(domiciliarios)
+  })
+}
+
 module.exports = {
   getDomiciliario,
   getDomiciliarios,
@@ -132,5 +140,6 @@ module.exports = {
   updateDomiciliario,
   signUp,
   signIn,
-  search
+  search,
+  GetArrayDomiciliario
 }

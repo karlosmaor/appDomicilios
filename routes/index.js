@@ -36,6 +36,7 @@ api.delete('/delivery/:deliveryId', DeliveryCtrl.deleteDelivery)
 //--------------Rutas para domiciliario-------------//
 
 api.get('/domiciliarios', DomiciliarioCtrl.getDomiciliarios)
+api.get('/domiciliario/getarray', DomiciliarioCtrl.GetArrayDomiciliario)
 api.get('/domiciliario/:domiciliarioId', DomiciliarioCtrl.getDomiciliario)
 api.post('/domiciliario/signup', DomiciliarioCtrl.signUp)
 api.post('/domiciliario/signin', DomiciliarioCtrl.signIn)
