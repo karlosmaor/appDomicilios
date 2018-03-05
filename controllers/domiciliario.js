@@ -31,12 +31,9 @@ function updateDomiciliario(req,res){
   let update = req.body
   if(update.position != undefined) update.position = JSON.parse(update.position)
 
-/*  let update = JSON.parse(req.body)
-  console.log(update);*/
-
   Domiciliario.findByIdAndUpdate(domiciliarioId, update, function(err, domiciliarioUpdated){
-    if(err) return console.log(err); //res.status(500).send({message:`Error al editar el domiciliario en la base de datos ${err}`})
-    /*
+    if(err) return res.status(500).send({message:`Error al editar el domiciliario en la base de datos ${err}`})
+
     if(update.password != undefined){
       Domiciliario.findById(domiciliarioId, (err, dom)=>{
         if(err) return res.status(500).send(err)
@@ -46,7 +43,8 @@ function updateDomiciliario(req,res){
 
         })
       })
-    }}*/
+    }
+    if(domiciliarioUpdated == undefined) return res.status(500).send('No se encontró el domiciliario.')
     res.status(200).send('hola Juanda')
   })
 }
