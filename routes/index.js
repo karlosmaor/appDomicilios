@@ -69,7 +69,7 @@ api.delete('/register/:registerId', RegisterCtrl.deleteRegister)
 
 //---------------Rutas para mapas------------------//
 api.get('/maps',function(req, res){
-    fs.readFile('./appDomicilios/appDomicilios/mymap/index.html');
+    fs.readFile('cd ./appDomicilios/appDomicilios/mymap/index.html');
 })
 
 /*api.get('/private', auth, function(req,res){
