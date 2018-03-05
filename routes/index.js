@@ -9,6 +9,7 @@ const DeliveryCtrl  = require('../controllers/delivery')
 const DomiciliarioCtrl  = require('../controllers/domiciliario')
 const workerCtrl  = require('../controllers/worker')
 const RegisterCtrl = require('../controllers/register')
+const MapCtrl = require('../controllers/map')
 
 //----------------Rutas Cliente-------------//
 
@@ -68,9 +69,9 @@ api.put('/register/:registerId', RegisterCtrl.updateRegister)
 api.delete('/register/:registerId', RegisterCtrl.deleteRegister)
 
 //-----------------Rutas para mapas-----------------------------//
-api.get('/maps/:mapdata',function(req,res){
-  res.render('index.ejs',{idDomiciliario: req.params.mapdata})
-})
+api.get('/maps/findbystate/:state',MapCtrl.showDomiciliarios)
+api.get('/maps/:mapdata',MapCtrl.showDomiciliario)
+
 /*api.get('/private', auth, function(req,res){
   res.status(200).send({message:'Tienes acceso'})
 })*/
