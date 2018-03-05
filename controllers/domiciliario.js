@@ -8,7 +8,7 @@ function getDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
 
   Domiciliario.findById(domiciliarioId, (err, domiciliario) => {
-  
+
     if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(!domiciliario) return res.status(404).send({message:'El domiciliario no existe'})
 
@@ -27,7 +27,7 @@ function getDomiciliarios(req, res){
 
 function updateDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
-  let update = req.body
+  let update = JSON.parse(req.body)
 
 
   Domiciliario.findByIdAndUpdate(domiciliarioId, update, (err, domiciliarioUpdated) =>{
