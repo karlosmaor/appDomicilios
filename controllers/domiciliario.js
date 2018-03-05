@@ -27,7 +27,6 @@ function getDomiciliarios(req, res){
 
 function updateDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
-  console.log(req.body);
   let update = req.body
   if(update.position != undefined)update.position = JSON.parse(update.position)
 
