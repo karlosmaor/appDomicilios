@@ -71,6 +71,8 @@ api.get('/maps/:mapData', function(req,res){
   res.sendFile('/home/carlosmaor2/appDomicilios/appDomicilios/mymap/index.html')
 })
 
+api.use('/public', express.static('../mymap'))
+
 /*api.get('/private', auth, function(req,res){
   res.status(200).send({message:'Tienes acceso'})
 })*/
