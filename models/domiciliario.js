@@ -15,7 +15,7 @@ const DomiciliarioSchema = new Schema({
   coins: {type: Number, default: 0},
   debt: {type: Number, default: 0},
   state: {type: Number, default: 0},
-  tokenNotification String,
+  tokenNotification: String,
   deliveries: [String],
   position: {
     lat: {type: Number, default: 0.0},
