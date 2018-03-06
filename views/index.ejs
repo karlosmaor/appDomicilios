@@ -69,9 +69,8 @@
             title: domiciliarios[i].phone
           })
 
-          markers[i].addListener('click', function(){
-            var t = infoArray[i]
-            t.open(map, markers[i])
+          google.maps.event.addListener(markers[i], 'click',function(){
+            infoArray[i].open(map,this)
           })
         }
 
