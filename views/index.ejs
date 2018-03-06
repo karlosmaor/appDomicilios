@@ -23,6 +23,7 @@
     <script>
       // This example displays a marker at the center of Australia.
       // When the user clicks the marker, an info window opens.
+      var domAux
 
       function initMap() {
 
@@ -70,8 +71,10 @@
             title: domiciliarios[i].phone
           })
 
+          domAux = domiciliarios[i].name
+
           google.maps.event.addListener(markers[i], 'click',function(){
-            //info.setContent(domiciliarios[i].name)
+            info.setContent(domAux)
             info.setPosition(this.getPosition())
             info.open(map,this)
           })
