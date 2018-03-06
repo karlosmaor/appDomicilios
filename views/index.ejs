@@ -24,7 +24,8 @@
       // This example displays a marker at the center of Australia.
       // When the user clicks the marker, an info window opens.
       var domAux = new Array()
-      var cont = 0
+      var markers
+      var markerActual
 
       function initMap() {
 
@@ -58,7 +59,7 @@
         });
 
         var infoArray = new Array(domiciliarios.length)
-        var markers = new Array(domiciliarios.length)
+        markers = new Array(domiciliarios.length)
         var info = new google.maps.InfoWindow()
 
         for(i=0; i<domiciliarios.length; i++){
@@ -73,12 +74,16 @@
           })
 
           domAux[i] = domiciliarios[i].name
-          cont = i
           google.maps.event.addListener(markers[i], 'click',function(){
-            info.setContent(domAux[cont])
+            markerActual = this
+            info.setContent(domAux[markers.findIndex(isMarkerFind])
             info.setPosition(this.getPosition())
             info.open(map,this)
           })
+        }
+
+        function isMarkerFind(element) {
+          return element == markerActual;
         }
 
       }
