@@ -21,8 +21,6 @@
   <body>
     <div id="map"></div>
     <script>
-      var a;
-      var b;
       // This example displays a marker at the center of Australia.
       // When the user clicks the marker, an info window opens.
 
@@ -74,13 +72,11 @@
 
 
         }
-
-        markers[0].addListener('click', function(){
-          infoArray[0].open(map, markers[0])
-        })
-
-        a =infoArray;
-        b = markers;
+        for(i=0; i<domiciliarios.length; i++){
+          markers[0].addListener('click', function(){
+            infoArray[0].open(map, markers[0])
+          })
+        }
       }
     </script>
     <script async defer
