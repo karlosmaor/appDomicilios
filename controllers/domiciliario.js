@@ -77,6 +77,7 @@ function signUp(req,res){
   domiciliario.avatar = req.body.avatar
   domiciliario.phone = req.body.phone
   domiciliario.category = req.body.category
+  domiciliario.tokenNotification = req.body.tokenNotification
 
   Domiciliario.find({email: req.body.email}, (err,dom) =>{
     if(err) return res.status(500).send({message: err})
