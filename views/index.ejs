@@ -70,10 +70,14 @@
             map: map,
             title: domiciliarios[i].phone
           })
-          markers[i].addListener('click', function(){
-            infoArray[i].open(map, markers[i])
-          })
+
+
+
         }
+
+        markers[0].addListener('click', function(){
+          infoArray[0].open(map, markers[0])
+        })
 
         a =infoArray;
         b = markers;
