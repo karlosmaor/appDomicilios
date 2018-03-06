@@ -59,7 +59,12 @@ function updateDelivery(req,res){
   let update = req.body
   Delivery.findByIdAndUpdate(deliveryId, update,  (err, deliveryUpdated) =>{
     if(err) return res.status(500).send({message:`Error al editar la entrega de la base de datos ${err}`})
-    res.status(200).send(deliveryUpdated)
+
+    Delivery.findById(deliveryUpdated._id, (err, deliveryNew)=>{
+      if(err) return res.(500).send(err)
+
+      res.status(200).send(deliveryNew)
+    })
   })
 }
 
