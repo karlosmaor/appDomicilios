@@ -77,6 +77,8 @@ function signUp(req,res){
   domiciliario.avatar = req.body.avatar
   domiciliario.phone = req.body.phone
   domiciliario.category = req.body.category
+  domiciliario.coins = req.body.coins
+  domiciliario.debt = req.body.debt  
   domiciliario.tokenNotification = req.body.tokenNotification
   domiciliario.signupDate = new Date()
 
