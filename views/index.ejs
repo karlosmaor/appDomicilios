@@ -57,6 +57,7 @@
 
         var infoArray = new Array(domiciliarios.length)
         var markers = new Array(domiciliarios.length)
+        var info = new google.maps.InfoWindow()
 
         for(i=0; i<domiciliarios.length; i++){
           infoArray[i] = new google.maps.InfoWindow({
@@ -70,7 +71,6 @@
           })
 
           google.maps.event.addListener(markers[i], 'click',function(){
-            var info = new google.maps.InfoWindow()
             info.setContent(domiciliarios[i].name)
             info.setPosition(this.getPosition())
             info.open(map,this)
