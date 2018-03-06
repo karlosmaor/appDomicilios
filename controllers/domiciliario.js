@@ -30,7 +30,7 @@ function updateDomiciliario(req,res){
 
   let update = req.body
   if(update.position != undefined) update.position = JSON.parse(update.position)
-
+  if(update.deliveries != undefined) update.deliveries = JSON.parse(update.deliveries)
 
   Domiciliario.findByIdAndUpdate(domiciliarioId, update, function(err, domiciliarioUpdated){
     if(err) return res.status(500).send({message:`Error al editar el domiciliario en la base de datos ${err}`})
