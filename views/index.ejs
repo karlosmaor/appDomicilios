@@ -70,7 +70,10 @@
           })
 
           google.maps.event.addListener(markers[i], 'click',function(){
-            infoArray[i].open(map,this)
+            var info = new google.maps.InfoWindow()
+            info.setContent(domiciliarios[i].name)
+            info.setPosition(this.getPosition())
+            info.open(map,this)
           })
         }
 
