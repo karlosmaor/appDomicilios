@@ -52,7 +52,7 @@
       function loadMap(domiciliarios){
         var uluru = {lat: 1.215364, lng: -77.278325}
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 20,
+          zoom: 13,
           center: uluru
         });
 
@@ -61,9 +61,6 @@
         var info = new google.maps.InfoWindow()
 
         for(i=0; i<domiciliarios.length; i++){
-          infoArray[i] = new google.maps.InfoWindow({
-            content: domiciliarios[i].name
-          })
 
           markers[i] = new google.maps.Marker({
             position: domiciliarios[i].position,
