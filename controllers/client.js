@@ -68,6 +68,7 @@ function signUp(req,res){
   client.phone = req.body.phone
   client.address = req.body.address
   client.category = req.body.category
+  client.signupDate = new Date()
 
   Client.find({email: req.body.email}, (err,clien) =>{
     if(err) return res.status(500).send({message: err})

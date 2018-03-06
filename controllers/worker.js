@@ -68,6 +68,7 @@ function signUp(req,res){
   worker.address = req.body.address
   worker.rank = req.body.rank
   worker.id = req.body.id
+  worker.signupDate = new Date()
 
   Worker.find({email: req.body.email}, (err,wor) =>{
     if(err) return res.status(500).send({message: err})
