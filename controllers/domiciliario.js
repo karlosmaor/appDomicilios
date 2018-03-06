@@ -125,16 +125,6 @@ function search(req, res){
   })
 }
 
-function GetArrayDomiciliario(req, res){
-  var array_ids = JSON.parse(req.body.ids)
-
-  Domiciliario.find({_id: {$in: array_ids}}, function(err, domiciliarios){
-    if(err)return res.status(500).send(err)
-
-    res.status(200).send(domiciliarios)
-  })
-}
-
 module.exports = {
   getDomiciliario,
   getDomiciliarios,
@@ -142,6 +132,5 @@ module.exports = {
   updateDomiciliario,
   signUp,
   signIn,
-  search,
-  GetArrayDomiciliario
+  search
 }

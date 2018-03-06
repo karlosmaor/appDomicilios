@@ -27,36 +27,52 @@
 
       function initMap() {
 
-        fetch('http://146.71.79.215:3002/domicilios/domiciliario/'+'<%=idDomiciliario%>',{
-          method: 'GET'
-        })
-        .then(res => res.json())
-        .then(data => {
-          loadMap(data)
-        })
+        if('<%=tipo%>'==single){
+          fetch('http://146.71.79.215:3002/domicilios/domiciliario/'+'<%=datos%>',{
+            method: 'GET'
+          })
+          .then(res => res.json())
+          .then(data => {
+            loadMap([data])
+          })
+        }else{
+          var formData = new FormData();
+          formData.append("state", <%=datos%>);
+          fetch('http://146.71.79.215:3002/domicilios/domiciliario/search',{
+            method: 'POST',
+            body: formData
+          })
+          .then(res => res.json())
+          .then(data => {
+            loadMap(data)
+          })
+        }
       }
 
-      function loadMap(domiciliario){
-        var uluru = domiciliario.position
+      function loadMap(domiciliarios){
+        var uluru = {lat: 1.215364, lng: -77.278325}
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
+          zoom: 20,
           center: uluru
         });
 
-        var contentString = 'holi';
+        var infoArray = new Array(domiciliarios.length)
+        var markers = new Array(domiciliarios.length)
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
+        for(i=0; i<domiciliarios.length){
+          infoArray[i] = new google.maps.InfoWindow({
+            content: domiciliarios[i].name
+          })
 
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-          title: 'Uluru (Ayers Rock)'
-        });
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
+          markers[i] = new google.maps.Marker({
+            position: domiciliarios[i].position,
+            map: map,
+            title: domiciliarios[i].phone
+          })
+          markers[i].addListener('click', function(){
+            infoArray[i].open(map, markers[i])
+          })
+        }
       }
     </script>
     <script async defer

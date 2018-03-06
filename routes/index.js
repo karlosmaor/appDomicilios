@@ -41,7 +41,6 @@ api.get('/domiciliario/:domiciliarioId', DomiciliarioCtrl.getDomiciliario)
 api.post('/domiciliario/signup', DomiciliarioCtrl.signUp)
 api.post('/domiciliario/signin', DomiciliarioCtrl.signIn)
 api.post('/domiciliario/search', DomiciliarioCtrl.search)
-api.post('/domiciliario/getarray', DomiciliarioCtrl.GetArrayDomiciliario)
 api.post('/domiciliario/:domiciliarioId', DomiciliarioCtrl.updateDomiciliario)
 api.put('/domiciliario/:domiciliarioId', DomiciliarioCtrl.updateDomiciliario)
 api.delete('/domiciliario/:domiciliarioId', DomiciliarioCtrl.deleteDomiciliario)
@@ -69,8 +68,8 @@ api.put('/register/:registerId', RegisterCtrl.updateRegister)
 api.delete('/register/:registerId', RegisterCtrl.deleteRegister)
 
 //-----------------Rutas para mapas-----------------------------//
-api.get('/maps/findbystate/:state',MapCtrl.showDomiciliarios)
-api.get('/maps/:mapdata',MapCtrl.showDomiciliario)
+
+api.get('/maps/:mapdata',MapCtrl.showDomiciliarios)
 
 /*api.get('/private', auth, function(req,res){
   res.status(200).send({message:'Tienes acceso'})
