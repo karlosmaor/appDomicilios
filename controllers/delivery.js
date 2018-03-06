@@ -35,6 +35,7 @@ function saveDelivery(req,res){
   delivery.state = req.body.state
   delivery.positionStart = req.body.positionStart
   delivery.positionEnd = req.body.positionEnd
+  delivery.phone = req.body.phone
 
   delivery.save((err, deliveryStored)=>{
     if(err)return res.status(500).send({message :`Error al guardar la entrega en la base de datos: ${err}`})

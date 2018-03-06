@@ -11,6 +11,7 @@ const DeliverySchema = new Schema({
   date: {type: Date, default: new Date()},
   category: String,
   state: {type:Number, default: 0},
+  phone: String,
   positionStart: {
     lat: {type: Number, default: 0.0},
     lng: {type: Number, default: 0.0}
