@@ -27,7 +27,7 @@
 
       function initMap() {
 
-        if('<%=tipo%>'==single){
+        if('<%=tipo%>'== 'single'){
           fetch('http://146.71.79.215:3002/domicilios/domiciliario/'+'<%=datos%>',{
             method: 'GET'
           })
