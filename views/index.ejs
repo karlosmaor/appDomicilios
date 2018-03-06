@@ -21,7 +21,8 @@
   <body>
     <div id="map"></div>
     <script>
-
+      var a;
+      var b;
       // This example displays a marker at the center of Australia.
       // When the user clicks the marker, an info window opens.
 
@@ -73,6 +74,9 @@
             infoArray[i].open(map, markers[i])
           })
         }
+
+        a =infoArray;
+        b = markers;
       }
     </script>
     <script async defer
