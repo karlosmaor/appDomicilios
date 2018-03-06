@@ -8,7 +8,7 @@ const DeliverySchema = new Schema({
   domiciliario: String,
   addressStart: String,
   addressEnd: String,
-  date: {type: Date, default: Date.now()},
+  date: {type: Date, default: new Date()},
   category: String,
   state: {type:Number, default: 0},
   phone: String,
