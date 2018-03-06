@@ -23,7 +23,7 @@ const ClientSchema = new Schema({
 
 ClientSchema.pre('save',function(next){
   let client = this
-  if(client.password == "") return next()
+  if(client.password == undefined) return next()
 
   bcrypt.genSalt(10, (err,salt)=>{
     if(err) return next()
