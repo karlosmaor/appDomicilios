@@ -71,7 +71,7 @@
           })
 
           google.maps.event.addListener(markers[i], 'click',function(){
-            info.setContent(domiciliarios[i].name)
+            //info.setContent(domiciliarios[i].name)
             info.setPosition(this.getPosition())
             info.open(map,this)
           })
