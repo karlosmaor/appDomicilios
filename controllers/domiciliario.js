@@ -46,7 +46,11 @@ function updateDomiciliario(req,res){
       })
     }
     if(domiciliarioUpdated == undefined) return res.status(404).send('No se encontró el domiciliario.')
-    res.status(200).send(domiciliarioUpdated)
+    Domiciliario.findById(domiciliarioId, (err, dom)=>{
+      if(err) return res.status(500).send(err)
+
+        res.status(200).send(dom)
+    })
   })
 }
 
