@@ -69,14 +69,12 @@
             title: domiciliarios[i].phone
           })
 
-
-
-        }
-        for(i=0; i<domiciliarios.length; i++){
           markers[i].addListener('click', function(){
-            infoArray[i].open(map, markers[i])
+            var t = infoArray[i]
+            t.open(map, markers[i])
           })
         }
+
       }
     </script>
     <script async defer
