@@ -68,13 +68,13 @@ function updateDelivery(req,res){
 
   Delivery.findByIdAndUpdate(deliveryId, update,  (err, deliveryUpdated) =>{
     if(err) return res.status(500).send({message:`Error al editar la entrega de la base de datos ${err}`})
-    if(deliveryUpdated == undefined) return res.status(404).send('No se encontró el domiciliario')
-    
+    if(deliveryUpdated == undefined) return res.status(404).send('No se encontró el pedido')
+
     Delivery.findById(deliveryUpdated._id, (err, deliveryNew)=>{
       if(err) return res.status(500).send(err)
 
       var JsonDelivery = JSON.stringify(deliveryNew)
-      firebase.SendNotificationDomiciliarios(["dimCtIKJ69U:APA91bE-6iHT7wwurw0egtmBIeZcHKg96IHlWbqYFlsoaSgN69vgUKThQAm40tv_uOlETtJau6xdo3mQF2Hbjy4GKFeoEceP2Hv8WidbuWNVH-m-RmuXL_mFyq8YLb9FQB3HVrRbQ1T9"],JsonDelivery, "delete")
+      if(deliveryUpdated.state == 0 && deliveryNew.state == 1) firebase.SendNotificationDomiciliarios(["dimCtIKJ69U:APA91bE-6iHT7wwurw0egtmBIeZcHKg96IHlWbqYFlsoaSgN69vgUKThQAm40tv_uOlETtJau6xdo3mQF2Hbjy4GKFeoEceP2Hv8WidbuWNVH-m-RmuXL_mFyq8YLb9FQB3HVrRbQ1T9"],JsonDelivery, "delete")
       res.status(200).send(deliveryNew)
     })
   })
