@@ -10,6 +10,6 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use('/domicilios',api)
 
-app.use(express.static('../public'));
+app.use('/static',express.static('../public'));
 
 module.exports = app
