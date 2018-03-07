@@ -12,7 +12,7 @@ app.use('/domicilios',api)
 
 app.use('/static',express.static('../public'));
 app.get('/image', function(req, res){
-  res.sendFile('/home/carlosmaor2/appDomicilios/appDomicilios/public/images/marker0.png')
+  res.sendFile('/home/carlosmaor2/appDomicilios/appDomicilios/public/images/marker1.png')
 })
 
 module.exports = app
