@@ -67,6 +67,10 @@
         var infoArray = new Array(domiciliarios.length)
         markers = new Array(domiciliarios.length)
         var info = new google.maps.InfoWindow()
+        var icono = {
+            url: "http://img.fenixzone.net/i/g8Nu7lO.png", // url
+            scaledSize: new google.maps.Size(50, 50), // scaled size
+        }
 
         for(i=0; i<domiciliarios.length; i++){
 
@@ -74,7 +78,7 @@
             position: domiciliarios[i].position,
             map: map,
             title: domiciliarios[i].phone,
-            icon: 'http://img.fenixzone.net/i/g8Nu7lO.png',
+            icon: icono,
             info: new google.maps.InfoWindow({
               content: domiciliarios[i].name
             })
