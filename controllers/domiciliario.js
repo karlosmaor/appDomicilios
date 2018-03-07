@@ -135,7 +135,7 @@ function search(req, res){
 }
 
 function SendNotification(req, res){
-  Domiciliario.findOne({email: req.params.data}, (err, domiciliario)=>{
+  Domiciliario.findById(req.params.data, (err, domiciliario)=>{
     if(err) return res.status(500).send({message: err})
     if(!domiciliario) return res.status(404).send({message: 'No existe el usuario'})
     var token = domiciliario.tokenNotification
