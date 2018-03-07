@@ -34,8 +34,8 @@ function saveDelivery(req,res){
   delivery.addressEnd = req.body.addressEnd
   delivery.category = req.body.category
   delivery.state = req.body.state
-  delivery.positionStart = JSON.parse(req.body.positionStart)
-  delivery.positionEnd = JSON.parse(req.body.positionEnd)
+  if(req.body.positionStart != undefined) delivery.positionStart = JSON.parse(req.body.positionStart)
+  if(req.body.positionEnd != undefined) delivery.positionEnd = JSON.parse(req.body.positionEnd)
   delivery.phone = req.body.phone
   delivery.date = new Date()
 
