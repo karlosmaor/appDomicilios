@@ -10,6 +10,9 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use('/domicilios',api)
 
-app.use('/static',express.static('../public'));
+//app.use('/static',express.static('../public'));
+app.get('/image', function(req, res){
+  res.sendFile('/home/carlosmaor2/appDomicilios/appDomicilios/public/images/marker0.png')
+})
 
 module.exports = app
