@@ -2,6 +2,7 @@
 
 const Delivery =  require('../models/delivery')
 const Client = require('../models/client')
+const Domiciliario = require('../models/domiciliario')
 
 function getDelivery(req,res){
   let deliveryId = req.params.deliveryId
@@ -130,14 +131,12 @@ function GetDomiciliariosDeliveries(req, res){
       idsDomiciliarios[i] = deliveries[i].domiciliario
     }
 
-    res.status(200).send(idsDomiciliarios)
-  /*  Delivery.find({_id: {$in: ["5a9d8828db886793327ed0e8","5a9889dc0a09484f2263fb0c"]}}, function(err, deliveries){
+    Domiciliario.find({_id: {$in: idsDomiciliarios}}, function(err, domiciliarios){
       if(err)return res.status(500).send(err)
 
       res.status(200).send(domiciliarios)
-    })*/
+    })
   })
-
 }
 
 module.exports ={
