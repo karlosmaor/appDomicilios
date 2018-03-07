@@ -1,9 +1,17 @@
 'use strict'
 
+var admin = require('firebase-admin')
+var AdminAccount = require('../deone-sdk.json')
+
+admin.initializeApp({
+  credential: admin.credential.cert(AdminAccount),
+  databaseURL: 'https://deone-1519430782017.firebaseio.com/'
+})
+
 const mongoose = require('mongoose')
 const Domiciliario = require('../models/domiciliario')
 const service = require('../services')
-const admin = require('./firebase')
+//const admin = require('./firebase')
 
 function getDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
@@ -138,7 +146,9 @@ function SendNotification(req, res){
   Domiciliario.findById(req.params.data, (err, domiciliario)=>{
     if(err) return res.status(500).send({message: err})
     if(!domiciliario) return res.status(404).send({message: 'No existe el usuario'})
+
     var token = domiciliario.tokenNotification
+
     var payload = {
       data: {
         data1: '1',
@@ -157,7 +167,6 @@ function SendNotification(req, res){
      prioity: "high",
      timeToLive: 60*60*24
    }
-
 
     admin.messaging().sendToDevice(token,payload, options)
     .then((response)=>{
