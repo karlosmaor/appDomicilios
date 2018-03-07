@@ -6,8 +6,10 @@ const Domiciliario = require('../models/domiciliario')
 function showDomiciliarios(req,res){
   if(req.params.mapdata.length > 3){
     var tipoR = 'single'
-  }else{
+  }else if(req.params.length < 3){
     var tipoR = 'multiple'
+  }else if(req.params.length == 3){
+    var tipoR = 'DeliveriesClient'
   }
   res.render('index.ejs',{tipo: tipoR, datos: req.params.mapdata})
 }

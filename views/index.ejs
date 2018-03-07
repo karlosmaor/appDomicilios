@@ -35,10 +35,21 @@
           .then(data => {
             loadMap([data])
           })
-        }else{
+        }else if('<%=tipo%>'== 'multiple'){
           var formData = new FormData();
           formData.append("state", '<%=datos%>');
           fetch('http://146.71.79.215:3002/domicilios/domiciliario/search',{
+            method: 'POST',
+            body: formData
+          })
+          .then(res => res.json())
+          .then(data => {
+            loadMap(data)
+          })
+        }else{
+          var formData = new FormData();
+          formData.append("client", '<%=datos%>');
+          fetch('http://146.71.79.215:3002/domicilios/delivery/search/domiciliarios/client',{
             method: 'POST',
             body: formData
           })
