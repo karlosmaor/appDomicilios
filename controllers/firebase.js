@@ -8,4 +8,6 @@ admin.initializeApp({
   databaseURL: 'https://deone-1519430782017.firebaseio.com/'
 })
 
-exports.module = admin
+
+
+module.exports = admin

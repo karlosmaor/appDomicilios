@@ -1,17 +1,9 @@
 'use strict'
 
-var admin = require('firebase-admin')
-var AdminAccount = require('../deone-sdk.json')
-
-admin.initializeApp({
-  credential: admin.credential.cert(AdminAccount),
-  databaseURL: 'https://deone-1519430782017.firebaseio.com/'
-})
-
 const mongoose = require('mongoose')
 const Domiciliario = require('../models/domiciliario')
 const service = require('../services')
-//const admin = require('./firebase')
+const admin = require('./firebase')
 
 function getDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
