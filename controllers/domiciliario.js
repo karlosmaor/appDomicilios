@@ -143,14 +143,12 @@ function SendNotification(req, res){
     var tokens = [token, "asfrgergs"]
 
     var payload = {
-      notification: {
+      data: {
         title: "DeOne",
         body: "Esta es la notificación.",
         sound: "default",
         icon: "myicon",
-        color: "#CDDC39"
-      },
-      data: {
+        color: "#CDDC39",
         data1: '1',
         data2: 'cualquier cosa'
       }
