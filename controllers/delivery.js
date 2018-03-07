@@ -119,6 +119,21 @@ function searchDeliveriesClient(req, res){
   })
 }
 
+function GetDomiciliariosDeliveries(req, res){
+
+  Delivery.find({client: req.body.client, state: { $gt: 0, $lt: 3}}, '_id', (err, deliveries)=>{
+    if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
+    if(deliveries.length == 0)return res.status(501).send({message:'No hay entregas'})
+    res.status(200).send(deliveries)
+  /*  Delivery.find({_id: {$in: ["5a9d8828db886793327ed0e8","5a9889dc0a09484f2263fb0c"]}}, function(err, deliveries){
+      if(err)return res.status(500).send(err)
+
+      res.status(200).send(domiciliarios)
+    })*/
+  })
+
+}
+
 module.exports ={
   getDelivery,
   getDeliveries,
@@ -127,5 +142,6 @@ module.exports ={
   deleteDelivery,
   search,
   searchState,
-  searchDeliveriesClient
+  searchDeliveriesClient,
+  GetDomiciliariosDeliveries
 }
