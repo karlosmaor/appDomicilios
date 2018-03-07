@@ -65,9 +65,11 @@ function updateDelivery(req,res){
 
   let deliveryId = req.params.deliveryId
   let update = req.body
+
   Delivery.findByIdAndUpdate(deliveryId, update,  (err, deliveryUpdated) =>{
     if(err) return res.status(500).send({message:`Error al editar la entrega de la base de datos ${err}`})
-
+    if(deliveryUpdated == undefined) return res.status(404).send('No se encontró el domiciliario')
+    
     Delivery.findById(deliveryUpdated._id, (err, deliveryNew)=>{
       if(err) return res.status(500).send(err)
 
