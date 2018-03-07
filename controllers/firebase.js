@@ -9,7 +9,7 @@ admin.initializeApp({
 })
 
 function SendNotificationDomiciliarios(tokens){
-  
+
   var payload = {
     data: {
       title: "DeOne",
@@ -29,10 +29,10 @@ function SendNotificationDomiciliarios(tokens){
 
   admin.messaging().sendToDevice(tokens, payload, options)
   .then((response)=>{
-    res.status(200).send(response)
+    console.log(response)
   })
   .catch((error)=>{
-    res.status(500).send(error)
+    console.log(error)
   })
 }
 
