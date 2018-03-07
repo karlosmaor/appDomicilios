@@ -144,15 +144,9 @@ function SendNotification(req, res){
     var payload = {
       notification: {
         title: "DeOne",
-        body: "Esta es la notificación."
+        body: "Esta es la notificación.",
+        sound: "default"
       },
-      data: {
-        data1: '1',
-        data2: 'cualquier cosa'
-      }
-    }
-    var message = {
-      token: token,
       data: {
         data1: '1',
         data2: 'cualquier cosa'
@@ -161,10 +155,10 @@ function SendNotification(req, res){
 
    var options = {
      prioity: "high",
-     timeToLive: 60*60*24
+     timeToLive: 60
    }
 
-    admin.messaging().sendToDevice(token,payload, options)
+    admin.messaging().sendToDevice(token, payload, options)
     .then((response)=>{
       res.status(200).send(response)
     })
