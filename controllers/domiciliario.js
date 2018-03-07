@@ -150,6 +150,10 @@ function SendNotification(req, res){
     var token = domiciliario.tokenNotification
 
     var payload = {
+      notification: {
+        title: "DeOne",
+        body: "Esta es la notificación."
+      },
       data: {
         data1: '1',
         data2: 'cualquier cosa'
@@ -170,7 +174,7 @@ function SendNotification(req, res){
 
     admin.messaging().sendToDevice(token,payload, options)
     .then((response)=>{
-      console.log(response)
+      res.status
     })
     .catch((error)=>{
       console.log(error)
