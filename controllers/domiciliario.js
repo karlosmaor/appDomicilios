@@ -3,7 +3,7 @@
 const mongoose = require('mongoose')
 const Domiciliario = require('../models/domiciliario')
 const service = require('../services')
-const admin = require('firebase')
+const admin = require('./firebase')
 
 function getDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
