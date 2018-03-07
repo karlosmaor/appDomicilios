@@ -174,10 +174,10 @@ function SendNotification(req, res){
 
     admin.messaging().sendToDevice(token,payload, options)
     .then((response)=>{
-      res.status
+      res.status(200).send(response)
     })
     .catch((error)=>{
-      console.log(error)
+      res.status(500).send(error)
     })
   })
 }
