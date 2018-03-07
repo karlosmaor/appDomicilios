@@ -77,6 +77,10 @@ api.get('/maps/domiciliarios/client/:mapdata', MapCtrl.showDomiciliarios2)
 //-----------------------Rutas Notificaciones------------------//
 api.get('/notification/:data',DomiciliarioCtrl.SendNotification)
 
+api.get('/deone', function(req,res){
+  res.sendFile(__dirname + "/WebApp/index.html")
+})
+
 /*api.get('/private', auth, function(req,res){
   res.status(200).send({message:'Tienes acceso'})
 })*/
