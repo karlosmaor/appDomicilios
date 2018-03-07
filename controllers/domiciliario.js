@@ -140,6 +140,7 @@ function SendNotification(req, res){
     if(!domiciliario) return res.status(404).send({message: 'No existe el usuario'})
 
     var token = domiciliario.tokenNotification
+    var tokens = [token, "asfrgergs"]
 
     var payload = {
       notification: {
@@ -158,7 +159,7 @@ function SendNotification(req, res){
      timeToLive: 60
    }
 
-    admin.messaging().sendToDevice(token, payload, options)
+    admin.messaging().sendToDevice(tokens, payload, options)
     .then((response)=>{
       res.status(200).send(response)
     })
