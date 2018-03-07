@@ -47,11 +47,8 @@
             loadMap(data)
           })
         }else{
-          var formData = new FormData();
-          formData.append("client", '<%=datos%>');
-          fetch('http://146.71.79.215:3002/domicilios/delivery/search/domiciliarios/client',{
-            method: 'POST',
-            body: formData
+          fetch('http://146.71.79.215:3002/domicilios/delivery/search/domiciliarios/'+'<%=datos%>',{
+            method: 'GET'
           })
           .then(res => res.json())
           .then(data => {
