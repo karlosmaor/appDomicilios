@@ -154,6 +154,7 @@ function SendNotification(req, res){
       }
     }
 
+
    var options = {
      prioity: "high",
      timeToLive: 60
