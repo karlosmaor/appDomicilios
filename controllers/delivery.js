@@ -126,7 +126,7 @@ function GetDomiciliariosDeliveries(req, res){
     if(deliveries.length == 0)return res.status(501).send({message:'No hay entregas'})
 
     var idsDomiciliarios = new Array(deliveries.length)
-    for(i = 0; i<deliveries.length; i++){
+    for(var i = 0; i < deliveries.length; i++){
       idsDomiciliarios[i] = deliveries[i].domiciliario
     }
 
