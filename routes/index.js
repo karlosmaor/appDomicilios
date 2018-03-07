@@ -72,6 +72,7 @@ api.delete('/register/:registerId', RegisterCtrl.deleteRegister)
 //-----------------Rutas para mapas-----------------------------//
 
 api.get('/maps/:mapdata',MapCtrl.showDomiciliarios)
+api.get('/maps/domiciliarios/client/:mapdata', MapCtrl.showDomiciliarios2)
 
 /*api.get('/private', auth, function(req,res){
   res.status(200).send({message:'Tienes acceso'})
