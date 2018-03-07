@@ -102,7 +102,7 @@ function search(req,res){
 
 function searchState(req, res){
   var data = req.body
-  data.state = JSON.parse(data.state)
+  data.state = JSON.parse(req.body.state)
   Delivery.find(data, (err, deliveries)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(deliveries.length == 0)return res.status(501).send({message:'No hay entregas'})
