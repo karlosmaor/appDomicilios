@@ -8,16 +8,8 @@ const api = require('../routes')
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
-/*app.engine('.hbs', hbs({
-  default: 'default',
-  extname: '.hbs'
-}))
-app.set('view engine','.hbs')
-*/
 app.use('/domicilios',api)
 
-/*app.get('/maps', function(req,res){
-  res.render('map')
-})*/
+app.use('/public', express.static('../public'))
 
 module.exports = app

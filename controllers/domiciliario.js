@@ -146,7 +146,9 @@ function SendNotification(req, res){
       notification: {
         title: "DeOne",
         body: "Esta es la notificación.",
-        sound: "default"
+        sound: "default",
+        icon: "myicon",
+        color: "#CDDC39"
       },
       data: {
         data1: '1',
