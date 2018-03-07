@@ -3,6 +3,7 @@
 const mongoose = require('mongoose')
 const Domiciliario = require('../models/domiciliario')
 const service = require('../services')
+const admin = require('firebase')
 
 function getDomiciliario(req,res){
   let domiciliarioId = req.params.domiciliarioId
@@ -78,7 +79,7 @@ function signUp(req,res){
   domiciliario.phone = req.body.phone
   domiciliario.category = req.body.category
   domiciliario.coins = req.body.coins
-  domiciliario.debt = req.body.debt  
+  domiciliario.debt = req.body.debt
   domiciliario.tokenNotification = req.body.tokenNotification
   domiciliario.signupDate = new Date()
 
@@ -133,6 +134,29 @@ function search(req, res){
   })
 }
 
+function SendNotification(req, res){
+  Domiciliario.findOne({email: req.params.data}, (err, domiciliario)=>{
+    if(err) return res.status(500).send({message: err})
+    if(!domiciliario) return res.status(404).send({message: 'No existe el usuario'})
+    var token = domiciliario.tokenNotification
+
+    var message = {
+      token: token,
+      data: {
+        data1: '1',
+        data2: 'cualquier cosa'
+      }
+    }
+
+    admin.messaging().send(message)
+    .then((response)=>{
+      console.log(response)
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  })
+}
 module.exports = {
   getDomiciliario,
   getDomiciliarios,
@@ -140,5 +164,6 @@ module.exports = {
   updateDomiciliario,
   signUp,
   signIn,
-  search
+  search,
+  SendNotification
 }
