@@ -34,12 +34,12 @@ function saveDelivery(req,res){
   delivery.addressEnd = req.body.addressEnd
   delivery.category = req.body.category
   delivery.state = req.body.state
-  console.log(req.body.positionStart);
+  console.log(req.body);
   if(req.body.positionStart != undefined) delivery.positionStart = JSON.parse(req.body.positionStart)
   if(req.body.positionEnd != undefined) delivery.positionEnd = JSON.parse(req.body.positionEnd)
   delivery.phone = req.body.phone
   delivery.date = new Date()
-console.log(delivery.positionStart);
+  //console.log(delivery.positionStart);
   delivery.save((err, deliveryStored)=>{
     if(err)return res.status(500).send({message :`Error al guardar la entrega en la base de datos: ${err}`})
     let clientId = deliveryStored.client
