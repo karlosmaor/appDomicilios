@@ -78,7 +78,7 @@ api.get('/maps/domiciliarios/client/:mapdata', MapCtrl.showDomiciliarios2)
 api.get('/notification/:data',DomiciliarioCtrl.SendNotification)
 
 api.get('/deone', function(req,res){
-  res.sendFile("../WebApp/index.html")
+  res.sendFile("/home/carlosmaor2/appDomicilios/appDomicilios/WebApp/index.html")
 })
 
 /*api.get('/private', auth, function(req,res){
