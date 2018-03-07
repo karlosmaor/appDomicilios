@@ -149,18 +149,17 @@ function SendNotification(req, res){
         sound: "default",
         icon: "myicon",
         color: "#CDDC39",
-        data1: '1',
-        data2: 'cualquier cosa'
+        type: 'delivery',
+        delivery: 'cualquier cosa'
       }
     }
-
 
    var options = {
      prioity: "high",
      timeToLive: 60
    }
 
-    admin.messaging().sendToDevice(tokens, payload, options)
+    admin.admin.messaging().sendToDevice(tokens, payload, options)
     .then((response)=>{
       res.status(200).send(response)
     })

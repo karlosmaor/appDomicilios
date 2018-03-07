@@ -3,6 +3,7 @@
 const Delivery =  require('../models/delivery')
 const Client = require('../models/client')
 const Domiciliario = require('../models/domiciliario')
+const firebase = require('./firebase')
 
 function getDelivery(req,res){
   let deliveryId = req.params.deliveryId
@@ -34,13 +35,11 @@ function saveDelivery(req,res){
   delivery.addressEnd = req.body.addressEnd
   delivery.category = req.body.category
   delivery.state = req.body.state
-  console.log(req.body)
-  //delivery.positionStart = req.body.positionStart
   if(req.body.positionStart != undefined) delivery.positionStart = JSON.parse(req.body.positionStart)
-  //if(req.body.positionEnd != undefined) delivery.positionEnd = JSON.parse(req.body.positionEnd)
+  if(req.body.positionEnd != undefined) delivery.positionEnd = JSON.parse(req.body.positionEnd)
   delivery.phone = req.body.phone
   delivery.date = new Date()
-  //console.log(delivery.positionStart);
+
   delivery.save((err, deliveryStored)=>{
     if(err)return res.status(500).send({message :`Error al guardar la entrega en la base de datos: ${err}`})
     let clientId = deliveryStored.client
@@ -52,7 +51,10 @@ function saveDelivery(req,res){
       client.deliveries.push(deliveryStored._id)
       client.save((err)=>{
         if(err)return res.status(500).send(err)
-        res.status(200).send({delivery: deliveryStored})
+
+        firebase.SendNotificationDomiciliarios(["5a9e02e2ab89b3b6da22850f"])
+        res.status(200).send(deliveryStored)
+
       })
     })
   })
