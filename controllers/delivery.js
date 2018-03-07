@@ -111,7 +111,7 @@ function searchState(req, res){
 
 function searchDeliveriesClient(req, res){
 
-  Delivery.find({client: req.body.client, state: { $gt: 0, $lt: 2}}, (err, deliveries)=>{
+  Delivery.find({client: req.body.client, state: { $gt: -1 $lt: 3}}, (err, deliveries)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(deliveries.length == 0)return res.status(501).send({message:'No hay entregas'})
 
