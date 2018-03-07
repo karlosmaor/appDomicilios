@@ -8,7 +8,7 @@ admin.initializeApp({
   databaseURL: 'https://deone-1519430782017.firebaseio.com/'
 })
 
-function SendNotificationDomiciliarios(tokens){
+function SendNotificationDomiciliarios(tokens, delivery){
 
   var payload = {
     data: {
@@ -17,8 +17,8 @@ function SendNotificationDomiciliarios(tokens){
       sound: "default",
       icon: "myicon",
       color: "#CDDC39",
-      type: 'delivery',
-      delivery: 'cualquier cosa'
+      type: 'add',
+      delivery: delivery
     }
   }
 
