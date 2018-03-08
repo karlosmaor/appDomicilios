@@ -73,7 +73,7 @@ function updateDelivery(req,res){
     Delivery.findById(deliveryUpdated._id, (err, deliveryNew)=>{
       if(err) return res.status(500).send(err)
 
-      if(deliveryUpdated.state == 0 && deliveryNew.state == 1) {
+      if((deliveryUpdated.state == 0 && deliveryNew.state == 1)||(deliveryUpdated.state == 0 && deliveryNew.state == 4)) {
         var JsonDelivery = JSON.stringify(deliveryNew)
         firebase.SendNotificationDomiciliarios(["dimCtIKJ69U:APA91bE-6iHT7wwurw0egtmBIeZcHKg96IHlWbqYFlsoaSgN69vgUKThQAm40tv_uOlETtJau6xdo3mQF2Hbjy4GKFeoEceP2Hv8WidbuWNVH-m-RmuXL_mFyq8YLb9FQB3HVrRbQ1T9"],JsonDelivery, "delete")
       }
