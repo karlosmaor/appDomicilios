@@ -126,6 +126,7 @@ function signIn(req,res){
 }
 
 function search(req, res){
+  console.log(req.body);
   Domiciliario.find(req.body, (err, domiciliarios)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(domiciliarios.length == 0)return res.status(501).send({message:'No hay domiciliarios registrados'})
