@@ -24,8 +24,16 @@
       // This example displays a marker at the center of Australia.
       // When the user clicks the marker, an info window opens.
       var markers
+      var map
+      var markersImages
 
       function initMap() {
+        markersImages = ["http://ing3ns.com/deone/images/marker0.png","http://ing3ns.com/deone/images/marker1.png","http://ing3ns.com/deone/images/marker2.png"]
+        var uluru = {lat: 1.215364, lng: -77.278325}
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: uluru
+        });
 
         if('<%=tipo%>'== 'single'){
           fetch('http://146.71.79.215:3002/domicilios/domiciliario/'+'<%=datos%>',{
@@ -58,21 +66,17 @@
       }
 
       function loadMap(domiciliarios){
-        var uluru = {lat: 1.215364, lng: -77.278325}
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 14,
-          center: uluru
-        });
 
         var infoArray = new Array(domiciliarios.length)
         markers = new Array(domiciliarios.length)
         var info = new google.maps.InfoWindow()
-        var icono = {
-            url: "http://img.fenixzone.net/i/g8Nu7lO.png", // url
-            scaledSize: new google.maps.Size(50, 50), // scaled size
-        }
 
         for(i=0; i<domiciliarios.length; i++){
+
+          var icono = {
+              url: markersImages[domiciliarios[i].state], // url
+              scaledSize: new google.maps.Size(50, 50), // scaled size
+          }
 
           markers[i] = new google.maps.Marker({
             position: domiciliarios[i].position,
