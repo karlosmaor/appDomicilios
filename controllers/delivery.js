@@ -133,7 +133,7 @@ function searchDeliveriesClient(req, res){
 
 function GetDomiciliariosDeliveries(req, res){
 
-  Delivery.find({client: req.params.client, state: { $gt: 0, $lt: 3}}, 'domiciliario', (err, deliveries)=>{
+  Delivery.find({client: req.params.client, state: { $gt: 0, $lt: 3}}, (err, deliveries)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(deliveries.length == 0)return res.status(501).send({message:'No hay entregas'})
 
@@ -141,11 +141,11 @@ function GetDomiciliariosDeliveries(req, res){
     for(var i = 0; i < deliveries.length; i++){
       idsDomiciliarios[i] = deliveries[i].domiciliario
     }
-
+    res.status(200).send(idsDomiciliarios)
     Domiciliario.find({_id: {$in: idsDomiciliarios}}, function(err, domiciliarios){
       if(err)return res.status(500).send(err)
 
-      res.status(200).send(domiciliarios)
+
     })
   })
 }
