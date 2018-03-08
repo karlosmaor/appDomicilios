@@ -136,17 +136,16 @@ function GetDomiciliariosDeliveries(req, res){
   Delivery.find({client: req.params.client, state: { $gt: 0, $lt: 3}}, (err, deliveries)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(deliveries.length == 0)return res.status(501).send({message:'No hay entregas'})
-    res.status(200).send(deliveries)
-    /*var idsDomiciliarios = new Array(deliveries.length)
+
+    var idsDomiciliarios = new Array(deliveries.length)
     for(var i = 0; i < deliveries.length; i++){
       idsDomiciliarios[i] = deliveries[i].domiciliario
     }
 
     Domiciliario.find({_id: {$in: idsDomiciliarios}}, function(err, domiciliarios){
       if(err)return res.status(500).send(err)
-
-
-    })*/
+      res.status(200).send(deliveries)
+    })
   })
 }
 
