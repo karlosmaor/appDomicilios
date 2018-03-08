@@ -134,40 +134,6 @@ function search(req, res){
   })
 }
 
-function SendNotification(req, res){
-  Domiciliario.findById(req.params.data, (err, domiciliario)=>{
-    if(err) return res.status(500).send({message: err})
-    if(!domiciliario) return res.status(404).send({message: 'No existe el usuario'})
-
-    var token = domiciliario.tokenNotification
-    var tokens = [token, "asfrgergs"]
-
-    var payload = {
-      data: {
-        title: "DeOne",
-        body: "Esta es la notificación.",
-        sound: "default",
-        icon: "myicon",
-        color: "#CDDC39",
-        type: 'delivery',
-        delivery: 'cualquier cosa'
-      }
-    }
-
-   var options = {
-     prioity: "high",
-     timeToLive: 60
-   }
-
-    admin.admin.messaging().sendToDevice(tokens, payload, options)
-    .then((response)=>{
-      res.status(200).send(response)
-    })
-    .catch((error)=>{
-      res.status(500).send(error)
-    })
-  })
-}
 module.exports = {
   getDomiciliario,
   getDomiciliarios,
@@ -175,6 +141,5 @@ module.exports = {
   updateDomiciliario,
   signUp,
   signIn,
-  search,
-  SendNotification
+  search
 }

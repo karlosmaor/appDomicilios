@@ -10,6 +10,7 @@ const DomiciliarioCtrl  = require('../controllers/domiciliario')
 const workerCtrl  = require('../controllers/worker')
 const RegisterCtrl = require('../controllers/register')
 const MapCtrl = require('../controllers/map')
+const AppClientCtrl = require('../controllers/appClient')
 
 //----------------Rutas Cliente-------------//
 
@@ -74,12 +75,13 @@ api.delete('/register/:registerId', RegisterCtrl.deleteRegister)
 api.get('/maps/:mapdata',MapCtrl.showDomiciliarios)
 api.get('/maps/domiciliarios/client/:mapdata', MapCtrl.showDomiciliarios2)
 
-//-----------------------Rutas Notificaciones------------------//
-api.get('/notification/:data',DomiciliarioCtrl.SendNotification)
+//--------------------Rutas APPCliente------------------------------//
 
-api.get('/deone', function(req,res){
-  res.sendFile("/home/carlosmaor2/appDomicilios/appDomicilios/WebApp/index.html")
-})
+api.post('/client2/signin', AppClientCtrl.signIn)
+api.get('/domiciliario2/:domiciliarioId', AppClientCtrl.getDomiciliario)
+api.post('/delivery2', AppClientCtrl.saveDelivery)
+api.post('/delivery2/:deliveryId', AppClientCtrl.updateDelivery)
+api.post('/delivery2/search/deliveries/client', AppClientCtrl.searchDeliveriesClient)
 
 /*api.get('/private', auth, function(req,res){
   res.status(200).send({message:'Tienes acceso'})
