@@ -144,7 +144,7 @@ function GetDomiciliariosDeliveries(req, res){
 
     Domiciliario.find({_id: {$in: idsDomiciliarios}}, function(err, domiciliarios){
       if(err)return res.status(500).send(err)
-      res.status(200).send(deliveries)
+      res.status(200).send(domiciliarios)
     })
   })
 }
