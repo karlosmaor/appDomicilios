@@ -26,6 +26,7 @@
       var markers
       var map
       var markersImages
+      var domiciliarios
 
       function initMap() {
         markersImages = ["http://ing3ns.com/deone/images/marker0.png","http://ing3ns.com/deone/images/marker1.png","http://ing3ns.com/deone/images/marker2.png"]
@@ -65,7 +66,9 @@
         }
       }
 
-      function loadMap(domiciliarios){
+      function loadMap(doms){
+
+        domiciliarios = doms
 
         var infoArray = new Array(domiciliarios.length)
         markers = new Array(domiciliarios.length)
