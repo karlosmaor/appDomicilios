@@ -46,11 +46,14 @@
             loadMap([data])
           })
         }else if('<%=tipo%>'== 'multiple'){
+
           var formData = new FormData();
           formData.append("state", '<%=datos%>');
           fetch('http://146.71.79.215:3002/domicilios/domiciliario/search',{
             method: 'POST',
-            body: formData
+            body: JSON.stringify({
+                state: '<%=datos%>'
+            })
           })
           .then(res => res.json())
           .then(data => {
