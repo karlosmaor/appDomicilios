@@ -69,14 +69,13 @@
           })
           .then(res => res.json())
           .then(data => {
-            loadMap(data)
+            domiciliarios = data
+            loadMap()
           })
         }
       }
 
-      function loadMap(doms){
-
-        domiciliarios = doms
+      function loadMap(){
 
         var infoArray = new Array(domiciliarios.length)
         markers = new Array(domiciliarios.length)
@@ -101,8 +100,9 @@
             this.info.open(map,this)
           })
         }
-
       }
+
+      var intervalo = setInterval('loadMap()',5000)
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4tPF0Km-EZCrbiHCmt3yOFx-s9EMLlBs&callback=initMap">
