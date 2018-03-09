@@ -29,8 +29,8 @@ function updateClient(req,res){
   let clientId = req.params.clientId
   let update = req.body
   console.log(req.body);
-  if(update.position != undefined) update.position = JSON.parse(update.position)
-  console.log(update);
+  //if(update.position != undefined) update.position = JSON.parse(update.position)
+  //console.log(update);
 /*  Client.findByIdAndUpdate(clientId, update, (err, clientUpdated) =>{
     if(err) return res.status(500).send({message:`Error al editar el Client en la base de datos ${err}`})
 
