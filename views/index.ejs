@@ -51,8 +51,6 @@
           headers.append('Accept', 'application/json'); // This one is enough for GET requests
           headers.append('Content-Type', 'application/json'); // This one sends body
 
-          var formData = new FormData();
-          formData.append("state", '<%=datos%>');
           fetch('http://146.71.79.215:3002/domicilios/domiciliario/search',{
             method: 'POST',
             credentials: "include",
