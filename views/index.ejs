@@ -94,7 +94,7 @@
         for(i=0; i<domiciliarios.length; i++){
 
           var icono = {
-              url: markersImages[domiciliarios[i].state], // url
+              url: markersImages[(domiciliarios[i].state-1)], // url
               scaledSize: new google.maps.Size(50, 50), // scaled size
           }
           markers[i] = new google.maps.Marker({
