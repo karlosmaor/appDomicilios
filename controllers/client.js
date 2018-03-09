@@ -12,7 +12,7 @@ function getClient(req,res){
     if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(!client) return res.status(404).send({message:'El Client no existe'})
 
-  res.status(200).send(client)
+    res.status(200).send(client)
   })
 }
 

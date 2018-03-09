@@ -24,7 +24,23 @@
 
       function initMap() {
 
+        fetch('http://146.71.79.215:3002/domicilios/client/'+'<%=datos%>',{
+          method: 'GET'
+        })
+        .then(res => res.json())
+        .then(data => {
+          loadMapa(data)
+        })
+      }
+
+      function loadMapa(cliente){
+
         var uluru = {lat: 1.215364, lng: -77.278325}
+        if(cliente.position.lat == 0){
+          uluru = {lat: 1.215364, lng: -77.278325}
+        }else{
+          uluru = cliente.position
+        }
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 16,
           center: uluru
