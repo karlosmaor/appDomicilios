@@ -30,7 +30,7 @@
 
       function initMap() {
 
-        markersImages = ["http://ing3ns.com/deone/images/marker0.png","http://ing3ns.com/deone/images/marker1.png","http://ing3ns.com/deone/images/marker2.png"]
+        markersImages = ["http://ing3ns.com/deone/images/marker3.png","http://ing3ns.com/deone/images/marker0.png","http://ing3ns.com/deone/images/marker1.png","http://ing3ns.com/deone/images/marker2.png"]
         var uluru = {lat: 1.215364, lng: -77.278325}
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
@@ -94,7 +94,7 @@
         for(i=0; i<domiciliarios.length; i++){
 
           var icono = {
-              url: markersImages[(domiciliarios[i].state-1)], // url
+              url: markersImages[(domiciliarios[i].state], // url
               scaledSize: new google.maps.Size(50, 50), // scaled size
           }
           markers[i] = new google.maps.Marker({
