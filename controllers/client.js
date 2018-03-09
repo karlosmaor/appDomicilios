@@ -28,8 +28,10 @@ function getClients(req, res){
 function updateClient(req,res){
   let clientId = req.params.clientId
   let update = req.body
-
-  Client.findByIdAndUpdate(clientId, update, (err, clientUpdated) =>{
+  console.log(req.body);
+  if(update.position != undefined) update.position = JSON.parse(update.position)
+  console.log(update);
+/*  Client.findByIdAndUpdate(clientId, update, (err, clientUpdated) =>{
     if(err) return res.status(500).send({message:`Error al editar el Client en la base de datos ${err}`})
 
     if(update.password != undefined){
@@ -44,7 +46,7 @@ function updateClient(req,res){
       })
     }
     res.status(200).send(clientUpdated)
-  })
+  })*/
 }
 
 function deleteClient(req,res){

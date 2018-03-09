@@ -37,14 +37,27 @@
           title: "Muéveme"
         })
 
-        google.maps.event.addListener(marker, 'drag', function (evt) {
-          console.log('Latitud:'+this.getPosition().lat()+' Longitud:'+this.getPosition().lng());
-        })
-
         google.maps.event.addListener(marker, 'click', function (evt) {
-          alert('Latitud:'+this.getPosition().lat()+'   Longitud:'+this.getPosition().lng());
-        })
+          var headers = new Headers();
+          headers.append('Accept', 'application/json'); // This one is enough for GET requests
+          headers.append('Content-Type', 'application/json'); // This one sends body
 
+          fetch('http://146.71.79.215:3002/domicilios/client/'+'<%=datos%>',{
+            method: 'POST',
+            credentials: "include",
+            body: JSON.stringify({
+                position: {
+                  lat: marker.getPosition().lat(),
+                  lng: marker.getPosition().lng()
+                }
+            }),
+            headers: headers
+          })
+          .then(res => res.json())
+          .then(data => {
+            loadMap(data)
+          })
+        })
       }
     </script>
     <script async defer
