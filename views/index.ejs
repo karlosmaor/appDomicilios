@@ -83,7 +83,9 @@
 
       function loadMap(){
 
-        setMapOnAll(null)
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(null);
+        }
         markers = []
         var infoArray = new Array(domiciliarios.length)
         markers = new Array(domiciliarios.length)
