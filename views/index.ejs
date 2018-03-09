@@ -88,7 +88,6 @@
           }
           markers = []
         }
-        var infoArray = new Array(domiciliarios.length)
         markers = new Array(domiciliarios.length)
 
         for(i=0; i<domiciliarios.length; i++){
@@ -103,7 +102,7 @@
             title: domiciliarios[i].phone,
             icon: icono,
             info: new google.maps.InfoWindow({
-              content: domiciliarios[i].name
+              content: '<p><b>'+domiciliarios[i].name+'</b></p><p>'domiciliarios[i].phone'</p>'
             })
           })
 
