@@ -43,7 +43,8 @@
           })
           .then(res => res.json())
           .then(data => {
-            loadMap([data])
+            domiciliarios = [data]
+            loadMap()
           })
         }else if('<%=tipo%>'== 'multiple'){
           var headers = new Headers();
@@ -61,7 +62,8 @@
           })
           .then(res => res.json())
           .then(data => {
-            loadMap(data)
+            domiciliarios = data
+            loadMap()
           })
         }else{
           fetch('http://146.71.79.215:3002/domicilios/delivery/search/domiciliarios/'+'<%=datos%>',{
