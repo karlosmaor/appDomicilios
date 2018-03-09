@@ -74,6 +74,7 @@ api.delete('/register/:registerId', RegisterCtrl.deleteRegister)
 
 api.get('/maps/:mapdata',MapCtrl.showDomiciliarios)
 api.get('/maps/domiciliarios/client/:mapdata', MapCtrl.showDomiciliarios2)
+api.get('/maps/selectpos/:mapdata', MapCtrl.selectPos)
 
 //--------------------Rutas APPCliente------------------------------//
 

@@ -17,7 +17,12 @@ function showDomiciliarios2(req, res){
   res.render('index.ejs',{tipo: tipoR, datos: req.params.mapdata})
 }
 
+function selectPos(req, res){
+  res.render('selectPos.ejs', {datos: req.params.mapdata})
+}
+
 module.exports = {
   showDomiciliarios,
-  showDomiciliarios2
+  showDomiciliarios2,
+  selectPos
 }
