@@ -82,11 +82,12 @@
       }
 
       function loadMap(){
-
-        for (var i = 0; i < markers.length; i++) {
-          markers[i].setMap(null);
+        if(markers != undefined){}
+          for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+          }
+          markers = []
         }
-        markers = []
         var infoArray = new Array(domiciliarios.length)
         markers = new Array(domiciliarios.length)
 
