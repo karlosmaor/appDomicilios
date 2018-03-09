@@ -2,6 +2,7 @@
 
 var admin = require('firebase-admin')
 var AdminAccount = require('../deone-sdk.json')
+const config = require('../config')
 
 admin.initializeApp({
   credential: admin.credential.cert(AdminAccount),
@@ -27,7 +28,7 @@ function SendNotificationDomiciliarios(tokens, delivery, tipo){
    timeToLive: 60
  }
 
-  admin.messaging().sendToDevice(tokens, payload, options)
+  admin.messaging().sendToTopic(config.state1, payload, options)
   .then((response)=>{
     console.log(response)
   })
