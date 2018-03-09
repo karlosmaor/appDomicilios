@@ -36,6 +36,10 @@
           zoom: 14,
           center: uluru
         });
+        reload()
+      }
+
+      function reload(){
 
         if('<%=tipo%>'== 'single'){
           fetch('http://146.71.79.215:3002/domicilios/domiciliario/'+'<%=datos%>',{
@@ -104,7 +108,7 @@
         }
       }
 
-      var intervalo = setInterval('loadMap()',5000)
+      var intervalo = setInterval('reload()',5000)
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4tPF0Km-EZCrbiHCmt3yOFx-s9EMLlBs&callback=initMap">
