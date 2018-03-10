@@ -92,15 +92,19 @@ function signUp(req,res){
 function signIn(req,res){
   Worker.findOne({email: req.body.email}, (err, worker)=>{
     if(err) return res.status(500).send({message: err})
-    if(!worker) return res.status(404).send({
-      message: 'No existe el usuario'
-    })
+    if(!worker) return res.status(404).send({message: 'No existe el usuario'})
 
     worker.comparePass(req.body.password,(isMatch)=>{
       if(isMatch){
-        res.status(200).send({
-          token: service.createToken(worker),
-          worker: worker
+
+        Worker.findByIdAndUpdate(worker._id, update, (err, workerUpdated) =>{
+          if(err) return res.status(500).send({message:`Error al editar el Client en la base de datos ${err}`})
+
+          res.status(200).send({
+            token: service.createToken(worker),
+            worker: worker
+          })
+
         })
       }else {
         res.status(401).send({error: 'Contraseña incorrecta'})

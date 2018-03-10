@@ -108,15 +108,19 @@ function signUp(req,res){
 function signIn(req,res){
   Domiciliario.findOne({email: req.body.email}, (err, domiciliario)=>{
     if(err) return res.status(500).send({message: err})
-    if(!domiciliario) return res.status(404).send({
-      message: 'No existe el usuario'
-    })
+    if(!domiciliario) return res.status(404).send({message: 'No existe el usuario'})
 
     domiciliario.comparePass(req.body.password,(isMatch)=>{
       if(isMatch){
-        res.status(200).send({
-          token: service.createToken(domiciliario),
-          domiciliario: domiciliario
+        var update = {lastLogin:new Date()}
+        Domiciliario.findByIdAndUpdate(domiciliario._id, update, (err, domiciliarioUpdated) =>{
+          if(err) return res.status(500).send({message:`Error al editar el Client en la base de datos ${err}`})
+
+          res.status(200).send({
+            token: service.createToken(domiciliario),
+            domiciliario: domiciliario
+          })
+
         })
       }else {
         res.status(401).send({error: 'Contraseña incorrecta'})
@@ -126,7 +130,7 @@ function signIn(req,res){
 }
 
 function search(req, res){
-  
+
   Domiciliario.find(req.body, (err, domiciliarios)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(domiciliarios.length == 0)return res.status(501).send({message:'No hay domiciliarios registrados'})
