@@ -16,9 +16,15 @@ function signIn(req,res){
 
     client.comparePass(req.body.password,(isMatch)=>{
       if(isMatch){
-        res.status(200).send({
-          token: service.createToken(client),
-          client: client
+        var update = {lastLogin:new Date()}
+        Client.findByIdAndUpdate(client._id, update, (err, clientUpdated) =>{
+          if(err) return res.status(205).send({message:`Error al editar el Client en la base de datos ${err}`})
+
+          res.status(200).send({
+            token: service.createToken(client),
+            client: client
+          })
+
         })
       }else {
         res.status(203).send({error: 'Contraseña incorrecta'})
