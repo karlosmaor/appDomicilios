@@ -96,7 +96,7 @@ function signIn(req,res){
 
     worker.comparePass(req.body.password,(isMatch)=>{
       if(isMatch){
-
+        var update = {lastLogin:new Date()}
         Worker.findByIdAndUpdate(worker._id, update, (err, workerUpdated) =>{
           if(err) return res.status(500).send({message:`Error al editar el Client en la base de datos ${err}`})
 
