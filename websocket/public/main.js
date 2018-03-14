@@ -10,7 +10,7 @@ function render(data){
     return(`<div>
                  <strong>${elem.author}</strong>:
                  <em>${elem.text}</em>
-           </div>`);
+           </div>`)
   }).join(" ")
 
   document.getElementById('messages').innerHTML = html;
@@ -18,9 +18,10 @@ function render(data){
 
 function addMessage(e){
   var payload = {
-    author:document.getElementById('username').value,
-    texto:document.getElementById('texto'),value
+    author: document.getElementById('username').value,
+    texto: document.getElementById('texto'),value
   }
+  console.log('entra');
   socket.emit('new-message', payload)
   return false
 }
