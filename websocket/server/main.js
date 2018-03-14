@@ -3,7 +3,7 @@ var app = express()
 var server = require('http').Server(app)
 var io = require('socket.io')(server)
 
-app.use('/static', express.static('../public'))
+app.use('/static', express.static(__dirname+'/public'))
 
 app.get('/hello', function(req,res){
   res.status(200).send('Hola Mundo')
