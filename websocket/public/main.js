@@ -16,13 +16,12 @@ function render(data){
   document.getElementById('messages').innerHTML = html;
 }
 
-function addMessage(e){
-  console.log('entra');
-/*  var payload = {
+function addMessage(){
+  var payload = {
     author: document.getElementById('username').value,
     texto: document.getElementById('texto'),value
   }
   console.log('entra');
   socket.emit('new-message', payload)
-  return false*/
+  return false
 }
