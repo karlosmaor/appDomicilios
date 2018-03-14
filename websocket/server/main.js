@@ -13,6 +13,11 @@ app.get('/hello', function(req,res){
 io.on('connection',function(socket){
   console.log('Alguien se ha conectado con sockets');
   
+  socket.emit('messages', {
+    id:1,
+    text:'Hola soy un mensaje',
+    author:'Carlos Ortega'
+  })
 })
 
 server.listen(8030, function (){
