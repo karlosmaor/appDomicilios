@@ -19,7 +19,7 @@ function render(data){
 function addMessage(){
   var payload = {
     author: document.getElementById('username').value,
-    texto: document.getElementById('texto'),value
+    texto: document.getElementById('texto').value
   }
   console.log('entra');
   socket.emit('new-message', payload)
