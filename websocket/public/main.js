@@ -17,11 +17,12 @@ function render(data){
 }
 
 function addMessage(e){
-  var payload = {
+  console.log('entra');
+/*  var payload = {
     author: document.getElementById('username').value,
     texto: document.getElementById('texto'),value
   }
   console.log('entra');
   socket.emit('new-message', payload)
-  return false
+  return false*/
 }
