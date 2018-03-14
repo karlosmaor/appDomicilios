@@ -10,8 +10,9 @@ app.get('/hello', function(req,res){
   res.status(200).send('Hola Mundo')
 })
 
-io.on('connect',function(socket){
+io.on('connection',function(socket){
   console.log('Alguien se ha conectado con sockets');
+  
 })
 
 server.listen(8030, function (){
