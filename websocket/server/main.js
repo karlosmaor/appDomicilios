@@ -6,15 +6,11 @@ var io = require('socket.io')(server)
 
 var messages = [{
   id:1,
-  text:'Hola soy un mensaje',
+  texto:'Hola soy un mensaje',
   author:'Carlos Ortega'
 }]
 
 app.use(expressStatic('../appDomicilios/websocket/public'))
-
-app.get('/hello', function(req,res){
-  res.status(200).send('Hola Mundo')
-})
 
 io.on('connection',function(socket){
   console.log('Alguien se ha conectado con sockets');
@@ -22,7 +18,7 @@ io.on('connection',function(socket){
   socket.emit('messages', messages)
 
   socket.on('new-message', function(data){
-    console.log(data);
+
     messages.push(data)
     io.sockets.emit('messages', messages)
   })

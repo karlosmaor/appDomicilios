@@ -9,7 +9,7 @@ function render(data){
   var html = data.map(function(elem,index){
     return(`<div>
                  <strong>${elem.author}</strong>:
-                 <em>${elem.text}</em>
+                 <em>${elem.texto}</em>
            </div>`)
   }).join(" ")
 
@@ -21,7 +21,7 @@ function addMessage(){
     author: document.getElementById('username').value,
     texto: document.getElementById('texto').value
   }
-  console.log('entra');
+
   socket.emit('new-message', payload)
   return false
 }
