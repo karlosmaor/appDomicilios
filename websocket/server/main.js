@@ -10,8 +10,6 @@ var messages = [{
   author:'Carlos Ortega'
 }]
 
-app.use(expressStatic('../appDomicilios/websocket/public'))
-
 io.on('connection',function(socket){
   console.log('Alguien se ha conectado con sockets');
 
