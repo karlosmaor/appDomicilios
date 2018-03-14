@@ -6,10 +6,21 @@ socket.on('messages', function(data){
 })
 
 function render(data){
-  var html = `<div>
-                <strong>${data.author}</strong>:
-                <em>${data.text}</em>
-              </div>`;
+  var html = data.map(function(elem,index){
+    return(`<div>
+                 <strong>${elem.author}</strong>:
+                 <em>${elem.text}</em>
+           </div>`);
+  }).join(" ")
 
   document.getElementById('messages').innerHTML = html;
+}
+
+function addMessage(e){
+  var payload = {
+    author:document.getElementById('username').value,
+    texto:document.getElementById('texto'),value
+  }
+  socket.emit('new-message', payload)
+  return false
 }

@@ -9,10 +9,10 @@
 <body>
   <h1>My App</h1>
   <div id="messages"></div>
-
-  <form>
-    <input type="text" id="username">
-    <input type="text" id="texto">
+  <br/>
+  <form onsubmit="return addMessage(this)">
+    <input type="text" id="username" placeholder="Tu nombre">
+    <input type="text" id="texto" placeholder="Cuentanos algo...">
     <input type="submit" value="Enviar!">
   </form>
 </body>
