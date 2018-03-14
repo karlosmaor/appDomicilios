@@ -2,7 +2,6 @@
 
 const express = require('express')
 const bodyParser = require('body-parser')
-//const hbs = require("express-handlebars")
 const app =  express()
 const api = require('../routes')
 
@@ -26,12 +25,5 @@ app.use('/domicilios',function (req, res, next) {
     // Pass to next layer of middleware
     next();
 }, api)
-
-
-/*
-app.use('/static',express.static('../public'));
-app.get('/image', function(req, res){
-  res.sendFile('/home/carlosmaor2/appDomicilios/appDomicilios/public/images/marker1.png')
-})*/
 
 module.exports = app
