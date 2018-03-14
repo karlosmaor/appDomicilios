@@ -4,7 +4,7 @@ var app = express()
 var server = require('http').Server(app)
 var io = require('socket.io')(server)
 
-app.use(expressStatic('../websocket/public'))
+app.use(expressStatic('../appDomicilios/websocket/public'))
 
 app.get('/hello', function(req,res){
   res.status(200).send('Hola Mundo')
