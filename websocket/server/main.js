@@ -19,9 +19,9 @@ io.on('connection',function(socket){
 
   socket.on('new-message', function(data){
     console.log(data);
-    //messages.push(data)
+    messages.push(data)
 
-    //io.sockets.emit('messages', messages)
+    io.sockets.emit('messages', messages)
   })
 })
 
