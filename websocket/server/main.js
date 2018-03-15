@@ -7,7 +7,7 @@ var io = require('socket.io')(server)
 var messages = [{
   id:1,
   texto:'Hola soy un mensaje',
-  author:'Carlos Ortega'
+  author:'Carlos Manuel Ortega Castillo'
 }]
 
 app.use(expressStatic('../appDomicilios/websocket/public'))
