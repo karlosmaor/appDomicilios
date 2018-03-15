@@ -184,6 +184,7 @@ function DeliveryFinished(req,res){
       if(err) return res.status(500).send({message:`Error buscando al domiciliario en la base de datos ${err}`})
 
       delivery.state = 3
+      domiciliario.state = 1
       domiciliario.deliveries.push(delivery._id)
       domiciliario.coins = domiciliario.coins - 1
 
