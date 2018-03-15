@@ -28,7 +28,7 @@ function SendNotificationDomiciliarios(tokens, delivery, tipo){
    timeToLive: 60
  }
 
-  admin.messaging().sendToTopic(config.state1, payload, options)
+  admin.messaging().sendToTopic(tokens, payload, options)
   .then((response)=>{
     console.log(response)
   })
