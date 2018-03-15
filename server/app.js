@@ -1,13 +1,10 @@
 'use strict'
 
 const express = require('express')
-const expressStatic = require('express-static')
 const bodyParser = require('body-parser')
 const app =  express()
 const api = require('../routes')
 
-
-app.use(expressStatic('../appDomicilios/websocket/public'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use('/domicilios',function (req, res, next) {
