@@ -18,10 +18,14 @@ io.on('connection',function(socket){
   socket.emit('messages', messages)
 
   socket.on('new-message', function(data){
-    console.log(data);
+    
     messages.push(data)
 
     io.sockets.emit('messages', messages)
+  })
+
+  socket.on('unity', function(data){
+    console.log(data)
   })
 })
 
