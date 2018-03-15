@@ -26,3 +26,8 @@ io.on('connection',function(socket){
 server.listen(8030, function (){
   console.log('Servidor Websocket corriendo...');
 })
+
+module.exports = {
+  io,
+  server
+}
