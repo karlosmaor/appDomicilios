@@ -18,10 +18,10 @@ io.on('connection',function(socket){
   socket.emit('messages', messages)
 
   socket.on('new-message', function(data){
-    
+
     messages.push(data)
 
-    io.sockets.emit('messages', messages)
+    enviarMensaje('messages', messages)
   })
 
   socket.on('unity', function(data){
@@ -33,7 +33,12 @@ server.listen(8030, function (){
   console.log('Servidor Websocket corriendo...');
 })
 
+function enviarMensaje(id, mensaje){
+  io.sockets.emit(id,mensaje)
+}
+
 module.exports = {
   io,
-  server
+  server,
+  enviarMensaje
 }
