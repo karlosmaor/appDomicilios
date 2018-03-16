@@ -5,6 +5,7 @@ const Client = require('../models/client')
 const Domiciliario = require('../models/domiciliario')
 const Delivery =  require('../models/delivery')
 const service = require('../services')
+const config = require('../config')
 const firebase = require('./firebase')
 
 function signIn(req,res){
@@ -59,7 +60,7 @@ function updateDelivery(req,res){
 
       if(deliveryUpdated.state == 0 && deliveryNew.state == 1) {
         var JsonDelivery = JSON.stringify(deliveryNew)
-        firebase.SendNotificationDomiciliarios(["dimCtIKJ69U:APA91bE-6iHT7wwurw0egtmBIeZcHKg96IHlWbqYFlsoaSgN69vgUKThQAm40tv_uOlETtJau6xdo3mQF2Hbjy4GKFeoEceP2Hv8WidbuWNVH-m-RmuXL_mFyq8YLb9FQB3HVrRbQ1T9"],JsonDelivery, "delete")
+        firebase.SendNotificationDomiciliarios(config.state1,JsonDelivery, "delete")
       }
       res.status(200).send(deliveryNew)
     })
@@ -103,7 +104,7 @@ function saveDelivery(req,res){
         if(err)return res.status(205).send(err)
 
         var JsonDelivery = JSON.stringify(deliveryStored)
-        firebase.SendNotificationDomiciliarios(["dimCtIKJ69U:APA91bE-6iHT7wwurw0egtmBIeZcHKg96IHlWbqYFlsoaSgN69vgUKThQAm40tv_uOlETtJau6xdo3mQF2Hbjy4GKFeoEceP2Hv8WidbuWNVH-m-RmuXL_mFyq8YLb9FQB3HVrRbQ1T9"],JsonDelivery,"add")
+        firebase.SendNotificationDomiciliarios(config.state1,JsonDelivery,"add")
         res.status(200).send(deliveryStored)
 
       })
