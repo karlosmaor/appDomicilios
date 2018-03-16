@@ -23,7 +23,7 @@ io.on('connection',function(socket){
   })
 
   socket.on('unity', function(data){
-    console.log(data)
+    enviarMensaje('messages', data)
   })
 })
 
