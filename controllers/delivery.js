@@ -157,8 +157,8 @@ function StartDelivery(req,res){
 
     Domiciliario.findById(req.body.domiciliario, (err,domiciliario) =>{
       if(err) return res.status(500).send({message:`Error buscando al domiciliario en la base de datos ${err}`})
-      if(domiciliario.coins < 1)return res.status(402).send('No tienes suficientes puntos.')
       if(domiciliario == null)return res.status(404).send('No se encontró al domiciliario')
+      if(domiciliario.coins < 1)return res.status(402).send('No tienes suficientes puntos.')      
 
       delivery.state = 1
       delivery.domiciliario = req.body.domiciliario
