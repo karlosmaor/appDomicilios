@@ -152,10 +152,10 @@ function GetDomiciliariosDeliveries(req, res){
 
 function StartDelivery(req,res){
   Delivery.findById(req.body.delivery, (err, delivery) =>{
-    if(err) return res.status(500).send({message:`Error buscando el pedido en la base de datos ${err}`})
+    if(err) return res.status(404).send({message:`Error buscando el pedido en la base de datos ${err}`})
 
     Domiciliario.findById(req.body.domiciliario, (err,domiciliario) =>{
-      if(err) return res.status(500).send({message:`Error buscando al domiciliario en la base de datos ${err}`})
+      if(err) return res.status(404).send({message:`Error buscando al domiciliario en la base de datos ${err}`})
       if(domiciliario.coins < 1)return res.status(400).send('No tienes suficientes puntos.')
 
       delivery.state = 1
