@@ -78,6 +78,10 @@ function updateDelivery(req,res){
         var JsonDelivery = JSON.stringify(deliveryNew)
         firebase.SendNotificationDomiciliarios(config.state1,JsonDelivery, "delete")
       }
+      if((deliveryUpdated.state == 1 && deliveryNew.state == 0)||(deliveryUpdated.state == 2 && deliveryNew.state == 0)) {
+        var JsonDelivery = JSON.stringify(deliveryNew)
+        firebase.SendNotificationDomiciliarios(config.state1,JsonDelivery, "add")
+      }
       if (deliveryUpdated.state == 1 && deliveryNew.state == 2){
         Domiciliario.findByIdAndUpdate(deliveryNew.domiciliario,{state: 3},(err, domiciliarioUpdated)=>{
           if(err)return res.status(500).send(err)
@@ -85,7 +89,7 @@ function updateDelivery(req,res){
         })
       }else {
         res.status(200).send(deliveryNew)
-      }    
+      }
     })
   })
 }
