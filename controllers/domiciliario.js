@@ -108,7 +108,7 @@ function signUp(req,res){
 function signIn(req,res){
   Domiciliario.findOne({email: req.body.email}, (err, domiciliario)=>{
     if(err) return res.status(500).send({message: err})
-    if(!domiciliario) return res.status(404).send({message: 'No existe el usuario'})
+    if(!domiciliario) return res.status(404).send('No existe el usuario')
 
     domiciliario.comparePass(req.body.password,(isMatch)=>{
       if(isMatch){
@@ -123,7 +123,7 @@ function signIn(req,res){
 
         })
       }else {
-        res.status(401).send({error: 'Contraseña incorrecta'})
+        res.status(401).send('Contraseña incorrecta')
       }
     })
   })
