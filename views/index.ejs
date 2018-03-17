@@ -27,7 +27,6 @@
       var map
       var markersImages
       var domiciliarios
-      var tiempo = 5000
 
       function initMap() {
 
@@ -43,7 +42,7 @@
       function reload(){
 
         if('<%=tipo%>'== 'single'){
-          tiempo = 5000
+          intervalo = setInterval('reload()',5000)
           fetch('http://146.71.79.215:3002/domicilios/domiciliario/'+'<%=datos%>',{
             method: 'GET'
           })
@@ -53,7 +52,7 @@
             loadMap()
           })
         }else if('<%=tipo%>'== 'multiple'){
-          tiempo = 1000*60*5
+          tintervalo = setInterval('reload()',1000*60*5)
           var headers = new Headers();
 
           headers.append('Accept', 'application/json'); // This one is enough for GET requests
@@ -73,7 +72,7 @@
             loadMap()
           })
         }else{
-          tiempo = 5000
+          intervalo = setInterval('reload()',5000)
           fetch('http://146.71.79.215:3002/domicilios/delivery/search/domiciliarios/'+'<%=datos%>',{
             method: 'GET'
           })
@@ -116,7 +115,7 @@
         }
       }
 
-      var intervalo = setInterval('reload()',tiempo)
+      var intervalo
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4tPF0Km-EZCrbiHCmt3yOFx-s9EMLlBs&callback=initMap">
