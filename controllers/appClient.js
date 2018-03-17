@@ -58,7 +58,7 @@ function updateDelivery(req,res){
     Delivery.findById(deliveryUpdated._id, (err, deliveryNew)=>{
       if(err) return res.status(205).send(err)
 
-      if(deliveryUpdated.state == 0 && deliveryNew.state == 1) {
+      if((deliveryUpdated.state == 0 && deliveryNew.state == 1)||(deliveryUpdated.state == 0 && deliveryNew.state == 4)) {
         var JsonDelivery = JSON.stringify(deliveryNew)
         firebase.SendNotificationDomiciliarios(config.state1,JsonDelivery, "delete")
       }
