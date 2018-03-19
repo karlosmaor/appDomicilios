@@ -50,6 +50,8 @@ function updateDelivery(req,res){
 
   let deliveryId = req.params.deliveryId
   let update = req.body
+  if(req.body.positionStart != undefined) update.positionStart = JSON.parse(req.body.positionStart)
+  if(req.body.positionEnd != undefined) update.positionEnd = JSON.parse(req.body.positionEnd)
 
   Delivery.findByIdAndUpdate(deliveryId, update,  (err, deliveryUpdated) =>{
     if(err) return res.status(205).send({message:`Error al editar la entrega de la base de datos ${err}`})
