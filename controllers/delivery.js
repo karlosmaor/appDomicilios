@@ -166,6 +166,7 @@ function GetDomiciliariosDeliveries(req, res){
 function StartDelivery(req,res){
   Delivery.findById(req.body.delivery, (err, delivery) =>{
     if(err) return res.status(500).send({message:`Error buscando el pedido en la base de datos ${err}`})
+    if(delivery.state != 0)return res.status(404).send('EL pedido fue asignado a otro domiciliario')
     if(delivery == null)return res.status(404).send('No se encontró la entrega')
 
     Domiciliario.findById(req.body.domiciliario, (err,domiciliario) =>{
