@@ -19,7 +19,7 @@ function showDomiciliarios2(req, res){
 
 function showAllDomiciliarios(req,res){
   var tipoR = 'allDomiciliarios'
-  res.render('index.ejs', {tipo:tipoR})
+  res.render('index.ejs', {tipo:tipoR, datos: 'nada'})
 }
 
 function selectPos(req, res){
