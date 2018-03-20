@@ -3,7 +3,7 @@
 const mongoose =  require('mongoose')
 const app  = require('./app')
 const config = require('../config')
-const websocket = require('../websocket/server/main')
+//const websocket = require('../websocket/server/main')
 
 mongoose.connect(config.db, (err,res)=>{
   if(err){
