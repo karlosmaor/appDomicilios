@@ -1,0 +1,13 @@
+{
+"companyName": "ing3ns",
+"productName": "deone",
+"dataUrl": "webapp.data.unityweb",
+"asmCodeUrl": "webapp.asm.code.unityweb",
+"asmMemoryUrl": "webapp.asm.memory.unityweb",
+"asmFrameworkUrl": "webapp.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
