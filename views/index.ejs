@@ -69,8 +69,17 @@
             domiciliarios = data
             loadMap()
           })
-        }else{
+        }else if('<%=tipo%>'== 'DeliveriesClient'){
           fetch('http://146.71.79.215:3002/domicilios/delivery/search/domiciliarios/'+'<%=datos%>',{
+            method: 'GET'
+          })
+          .then(res => res.json())
+          .then(data => {
+            domiciliarios = data
+            loadMap()
+          })
+        }else{
+          fetch('http://146.71.79.215:3002/domicilios/domiciliarios',{
             method: 'GET'
           })
           .then(res => res.json())

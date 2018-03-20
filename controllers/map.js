@@ -17,6 +17,11 @@ function showDomiciliarios2(req, res){
   res.render('index.ejs',{tipo: tipoR, datos: req.params.mapdata})
 }
 
+function showAllDomiciliarios(req,res){
+  var tipoR = 'allDomiciliarios'
+  res.render('index.ejs', {tipo:tipoR})
+}
+
 function selectPos(req, res){
   res.render('selectPos.ejs', {datos: req.params.mapdata})
 }
@@ -24,5 +29,6 @@ function selectPos(req, res){
 module.exports = {
   showDomiciliarios,
   showDomiciliarios2,
+  showAllDomiciliarios,
   selectPos
 }
