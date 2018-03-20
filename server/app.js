@@ -8,6 +8,8 @@ const api = require('../routes')
 
 app.use('/public', expressStatic('./public'))
 app.use('/webapp', expressStatic('./webapp'))
+app.use('/webapp/TemplateData', expressStatic('./webapp/TemplateData'))
+app.use('/webapp/Build', expressStatic('./webapp/Build'))
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
