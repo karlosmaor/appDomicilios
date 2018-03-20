@@ -7,7 +7,7 @@ const app =  express()
 const api = require('../routes')
 
 app.use('/public', expressStatic('./public'))
-app.use('/webapp/', expressStatic('./webapp'))
+app.use('/deone', expressStatic('./webapp'))
 app.use('/webapp/TemplateData', expressStatic('./webapp/TemplateData'))
 app.use('/webapp/Build', expressStatic('./webapp/Build'))
 
