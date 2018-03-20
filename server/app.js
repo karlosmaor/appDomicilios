@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const app =  express()
 const api = require('../routes')
 
-app.use(expressStatic('./public'))
+app.use('/public', expressStatic('./public'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use('/domicilios',function (req, res, next) {
