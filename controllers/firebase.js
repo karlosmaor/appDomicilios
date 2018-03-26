@@ -25,7 +25,7 @@ function SendNotificationDomiciliarios(tokens, delivery, tipo){
 
  var options = {
    prioity: "high",
-   timeToLive: 600
+   timeToLive: 60
  }
 
   admin.messaging().sendToTopic(tokens, payload, options)
