@@ -57,6 +57,7 @@ function saveDelivery(req,res){
           var JsonDelivery = JSON.stringify(deliveryEnvio)
           firebase.SendNotificationDomiciliarios(config.state1,JsonDelivery,"add")
           res.status(200).send(deliveryStored)
+        })
       })
     })
   })
