@@ -28,7 +28,7 @@ function getDeliveries(req, res){
 }
 
 function saveDelivery(req,res){
-
+  console.log('aqui toy hahaha');
   let delivery = new Delivery()
   delivery.client = req.body.client
   delivery.domiciliario = req.body.domiciliario
