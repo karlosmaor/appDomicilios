@@ -19,7 +19,7 @@ function getDelivery(req,res){
 }
 
 function getDeliveries(req, res){
-  Delivery.find({}, (err, deliveries)=>{
+  Delivery.find({}).populate('client').exec((err, deliveries)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(deliveries.length == 0)return res.status(501).send({message:'No hay entregas'})
 

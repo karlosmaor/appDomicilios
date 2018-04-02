@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const DeliverySchema = new Schema({
-  client: String,
+  client: {type: Schema.Types.ObjectId, ref: 'Client'},
   domiciliario: String,
   addressStart: String,
   addressEnd: String,
