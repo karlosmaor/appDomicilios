@@ -9,7 +9,7 @@ const config = require('../config')
 function getDelivery(req,res){
   let deliveryId = req.params.deliveryId
 
-  Delivery.findById(deliveryId, (err, delivery) => {
+  Delivery.findById(deliveryId).populate('client', 'name').exec((err, delivery) => {
 
     if(err) return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(!delivery) return res.status(404).send({message:'Esa entrega no existe'})
@@ -53,6 +53,10 @@ function saveDelivery(req,res){
       client.save((err)=>{
         if(err)return res.status(500).send(err)
 
+        deliveryStored.client = {
+          _id:client._id,
+          name:client.name
+        }
         var JsonDelivery = JSON.stringify(deliveryStored)
         firebase.SendNotificationDomiciliarios(config.state1,JsonDelivery,"add")
         res.status(200).send(deliveryStored)
@@ -73,7 +77,7 @@ function updateDelivery(req,res){
     if(err) return res.status(500).send({message:`Error al editar la entrega de la base de datos ${err}`})
     if(deliveryUpdated == undefined) return res.status(404).send('No se encontró el pedido')
 
-    Delivery.findById(deliveryUpdated._id, (err, deliveryNew)=>{
+    Delivery.findById(deliveryUpdated._id).populate('client', 'name').exec((err, deliveryNew)=>{
       if(err) return res.status(500).send(err)
 
       if((deliveryUpdated.state == 0 && deliveryNew.state == 1)||(deliveryUpdated.state == 0 && deliveryNew.state == 4)) {
@@ -127,7 +131,7 @@ function search(req,res){
 }
 
 function searchState(req, res){
-  Delivery.find(req.body, (err, deliveries)=>{
+  Delivery.find(req.body).populate('client', 'name').exec((err, deliveries)=>{
     if(err)return res.status(500).send({message:`Error al realizar la petición ${err}`})
     if(deliveries.length == 0)return res.status(501).send({message:'No hay entregas'})
 
@@ -164,7 +168,7 @@ function GetDomiciliariosDeliveries(req, res){
 }
 
 function StartDelivery(req,res){
-  Delivery.findById(req.body.delivery, (err, delivery) =>{
+  Delivery.findById(req.body.delivery).populate('client', 'name').exec((err, delivery) =>{
     if(err) return res.status(500).send({message:`Error buscando el pedido en la base de datos ${err}`})
     if(delivery.state != 0)return res.status(404).send('EL pedido fue asignado a otro domiciliario')
     if(delivery == null)return res.status(404).send('No se encontró la entrega')
