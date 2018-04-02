@@ -57,7 +57,7 @@ function updateDelivery(req,res){
     if(err) return res.status(205).send({message:`Error al editar la entrega de la base de datos ${err}`})
     if(deliveryUpdated == undefined) return res.status(204).send('No se encontró el pedido')
 
-    Delivery.findById(deliveryUpdated._id, (err, deliveryNew)=>{
+    Delivery.findById(deliveryUpdated._id).populate('client', 'name').exec((err, deliveryNew)=>{
       if(err) return res.status(205).send(err)
 
       if((deliveryUpdated.state == 0 && deliveryNew.state == 1)||(deliveryUpdated.state == 0 && deliveryNew.state == 4)) {
@@ -116,10 +116,11 @@ function saveDelivery(req,res){
       client.save((err)=>{
         if(err)return res.status(205).send(err)
 
-        var JsonDelivery = JSON.stringify(deliveryStored)
-        firebase.SendNotificationDomiciliarios(config.state1,JsonDelivery,"add")
-        res.status(200).send(deliveryStored)
-
+        Delivery.findById(deliveryStored._id).populate('client', 'name').exec((err, deliveryEnvio)=>{
+          var JsonDelivery = JSON.stringify(deliveryEnvio)
+          firebase.SendNotificationDomiciliarios(config.state1,JsonDelivery,"add")
+          res.status(200).send(deliveryStored)
+        })
       })
     })
   })

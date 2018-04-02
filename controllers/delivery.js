@@ -28,7 +28,7 @@ function getDeliveries(req, res){
 }
 
 function saveDelivery(req,res){
-  console.log('aqui toy hahaha');
+
   let delivery = new Delivery()
   delivery.client = req.body.client
   delivery.domiciliario = req.body.domiciliario
@@ -55,7 +55,6 @@ function saveDelivery(req,res){
 
         Delivery.findById(deliveryStored._id).populate('client', 'name').exec((err, deliveryEnvio)=>{
           var JsonDelivery = JSON.stringify(deliveryEnvio)
-          console.log(deliveryEnvio);
           firebase.SendNotificationDomiciliarios(config.state1,JsonDelivery,"add")
           res.status(200).send(deliveryStored)
         })
