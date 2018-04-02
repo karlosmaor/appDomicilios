@@ -52,12 +52,12 @@ function saveDelivery(req,res){
       client.deliveries.push(deliveryStored._id)
       client.save((err)=>{
         if(err)return res.status(500).send(err)
-
-        deliveryStored.client = {
+         let deliveryEnvio = deliveryStored
+        deliveryEnvio.client = {
           _id: client._id,
           name: client.name
         }
-        var JsonDelivery = JSON.stringify(deliveryStored)
+        var JsonDelivery = JSON.stringify(deliveryEnvio)
         firebase.SendNotificationDomiciliarios(config.state1,JsonDelivery,"add")
         res.status(200).send(deliveryStored)
 
