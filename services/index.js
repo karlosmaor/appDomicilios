@@ -15,6 +15,7 @@ function createToken(user){
 
 }
 
+
 function decodeToken(token){
   const decoded = new Promise((resolve, reject)=>{
     try{
