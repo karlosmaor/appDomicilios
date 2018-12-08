@@ -1,5 +1,5 @@
 module.exports = {
-  port: process.env.PORT || 1010,
+  port: process.env.PORT || 4040,
   db: process.env.MONGODB || 'mongodb://localhost:27017/BaseDataDomicilios',
   SECRET_TOKEN: 'AjfuSed*+aq-!1473?',
   state0: 'STATE_0',
